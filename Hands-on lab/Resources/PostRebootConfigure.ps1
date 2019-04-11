@@ -82,6 +82,81 @@ Function Set-VMNetworkConfiguration {
     }
 }
 
+Function Unzip-Files {
+    Param (
+        [Object]$Files,
+        [string]$Destination
+    )
+
+    foreach ($file in $files)
+    {
+        $fileName = $file.FullName
+
+        write-output "Start unzip: $fileName to $Destination"
+        
+        (new-object -com shell.application).namespace($Destination).CopyHere((new-object -com shell.application).namespace($fileName).Items(),16)
+        
+        write-output "Finish unzip: $fileName to $Destination"
+    }
+}
+
+Function Follow-Redirect {
+    Param (
+        [string]$Url
+    )
+
+    $webClientObject = New-Object System.Net.WebClient
+    $webRequest = [System.Net.WebRequest]::create($Url)
+    $webResponse = $webRequest.GetResponse()
+    $actualUrl = $webResponse.ResponseUri.AbsoluteUri
+    $webResponse.Close()
+
+    return $actualUrl
+}
+
+$ErrorActionPreference = 'SilentlyContinue'
+Import-Module BitsTransfer
+
+# Unregister scheduled task so this script doesn't run again on next reboot
+Unregister-ScheduledTask -TaskName "SetUpVMs" -Confirm:$false
+
+# Format data disk
+$disk = Get-Disk | ? { $_.PartitionStyle -eq "RAW" }
+Initialize-Disk -Number $disk.DiskNumber -PartitionStyle GPT
+New-Partition -DiskNumber $disk.DiskNumber -UseMaximumSize -DriveLetter F
+Format-Volume -DriveLetter F -FileSystem NTFS -NewFileSystemLabel DATA
+
+# Create paths
+$vmDir = "F:\VirtualMachines"
+$tempDir = "D:\"
+New-Item -Path $vmDir -ItemType directory
+
+# Download AzCopy. We won't use the aks.ms/downloadazcopy link in case of breaking changes in later versions
+$azcopyUrl = "https://azcopy.azureedge.net/azcopy-8-1-0/MicrosoftAzureStorageAzCopy_netcore_x64.msi"
+$azcopyMsi = "$tempDir\azcopy.msi"
+Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyMsi
+
+# Install AzCopy
+$arguments = "/i",$azcopyMsi,"/q"
+Start-Process -FilePath msiexec.exe -ArgumentList $arguments -Wait
+$azcopy = '"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\AzCopy.exe"'
+
+# Download SmartHotel VMs from blob storage
+$container = 'https://cloudworkshop.blob.core.windows.net/azure-migration'
+
+cmd /c "$azcopy /Source:$container/SmartHotelWeb1.zip /Dest:$tempDir\SmartHotelWeb1.zip"
+cmd /c "$azcopy /Source:$container/SmartHotelWeb2.zip /Dest:$tempDir\SmartHotelWeb2.zip"
+cmd /c "$azcopy /Source:$container/SmartHotelSQL1.zip /Dest:$tempDir\SmartHotelSQL1.zip"
+cmd /c "$azcopy /Source:$container/UbuntuWAF.zip /Dest:$tempDir\UbuntuWAF.zip"
+
+# Download the Azure Migrate appliance to save time during the lab
+$migrateApplianceUrl = Follow-Redirect("https://aka.ms/migrate/appliance/hyperv")
+Start-BitsTransfer -Source $migrateApplianceUrl -Destination "$tempDir\AzureMigrateAppliance.zip"
+
+# Unzip the VMs
+$zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
+Unzip-Files -Files $zipfiles -Destination $vmDir
+
 # Create the NAT network
 New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/16
 
@@ -105,34 +180,21 @@ New-NetFirewallRule -DisplayName "Microsoft SQL Server Inbound" -Direction Inbou
 Set-VMHost -EnableEnhancedSessionMode $true
 
 # Create the nested Windows VMs - from VHDs
-$opsDir = "F:\VirtualMachines"
-New-VM -Name smarthotelweb1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$opsdir\SmartHotelWeb1\SmartHotelWeb1.vhdx" -Path "$opsdir\SmartHotelWeb1" -Generation 2 -Switch $switchName 
-New-VM -Name smarthotelweb2 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$opsdir\SmartHotelWeb2\SmartHotelWeb2.vhdx" -Path "$opsdir\SmartHotelWeb2" -Generation 2 -Switch $switchName
-New-VM -Name smarthotelSQL1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$opsdir\SmartHotelSQL1\SmartHotelSQL1.vhdx" -Path "$opsdir\SmartHotelSQL1" -Generation 2 -Switch $switchName
-
-# Create nested Ubuntu VM - from exported VM
-$vmFile = Get-ChildItem -Path 'F:\VirtualMachines\UbuntuWAF\Virtual Machines' -Include *.vmcx -Recurse
-Import-VM -Path $vmFile.FullName
+New-VM -Name smarthotelweb1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelWeb1\SmartHotelWeb1.vhdx" -Path "$vmdir\SmartHotelWeb1" -Generation 2 -Switch $switchName 
+New-VM -Name smarthotelweb2 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelWeb2\SmartHotelWeb2.vhdx" -Path "$vmdir\SmartHotelWeb2" -Generation 2 -Switch $switchName
+New-VM -Name smarthotelSQL1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelSQL1\SmartHotelSQL1.vhdx" -Path "$vmdir\SmartHotelSQL1" -Generation 2 -Switch $switchName
+New-VM -Name UbuntuWAF -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\UbuntuWAF\UbuntuWAF.vhdx" -Path "$vmdir\UbuntuWAF" -Generation 1 -Switch $switchName
 
 # Configure IP addresses (don't change the IPs! VM config depends on them)
-$vmweb1 = Get-VMNetworkAdapter -VMName "smarthotelweb1"
-$vmweb2 = Get-VMNetworkAdapter -VMName "smarthotelweb2"
-$vmsql1 = Get-VMNetworkAdapter -VMName "smarthotelsql1"
-$vmwaf  = Get-VMNetworkAdapter -VMName "ubuntuwaf"
-
-$vmweb1 | Set-VMNetworkConfiguration -IPAddress "192.168.0.4" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
-$vmweb2 | Set-VMNetworkConfiguration -IPAddress "192.168.0.5" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
-$vmsql1 | Set-VMNetworkConfiguration -IPAddress "192.168.0.6" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
-$vmwaf  | Set-VMNetworkConfiguration -IPAddress "192.168.0.8" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
+Get-VMNetworkAdapter -VMName "smarthotelweb1" | Set-VMNetworkConfiguration -IPAddress "192.168.0.4" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
+Get-VMNetworkAdapter -VMName "smarthotelweb2" | Set-VMNetworkConfiguration -IPAddress "192.168.0.5" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
+Get-VMNetworkAdapter -VMName "smarthotelsql1" | Set-VMNetworkConfiguration -IPAddress "192.168.0.6" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
+Get-VMNetworkAdapter -VMName "UbuntuWAF" | Set-VMNetworkConfiguration -IPAddress "192.168.0.8" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
 
 # Start all the VMs
-Get-VM | where {$_.State -eq 'Off'} | Start-VM
+Get-VM | Where-Object {$_.State -eq 'Off'} | Start-VM
 
-while((Get-VM | where {$_.State -eq "Running"}).Count -lt 4) {
-    Start-Sleep -Seconds 5
-}
-
-# Give them a minute to finish booting
+# Give a minute to finish booting
 Start-Sleep 60
 
 # Rearm (extend evaluation license) and reboot each Windows VM
@@ -140,9 +202,8 @@ Write-Output "Configuring VMs..."
 $localusername = "Administrator"
 $password = ConvertTo-SecureString "demo@pass123" -AsPlainText -Force
 $localcredential = New-Object System.Management.Automation.PSCredential ($localusername, $password)
-$vmStopIP = 6
 
-for ($i = 4; $i -le $vmStopIP; $i++) {
+for ($i = 4; $i -le 6; $i++) {
     Write-Output "Configuring VM at 192.168.0.$i..."
     set-item wsman:\localhost\Client\TrustedHosts -value "192.168.0.$i" -Force
     Invoke-Command -ComputerName "192.168.0.$i" -ScriptBlock { 
@@ -160,6 +221,3 @@ Start-Sleep 60
 Invoke-WebRequest 'http://192.168.0.4/'
 Start-Sleep 15
 Invoke-WebRequest 'http://192.168.0.8/'
-
-# Unregister scheduled task so this script doesn't run again on next reboot
-Unregister-ScheduledTask -TaskName "SetUpVMs"
