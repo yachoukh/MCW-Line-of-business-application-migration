@@ -42,14 +42,15 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 2.  Your subscription must have sufficient unused quota to deploy the VMs used in this lab. To check your quota:
     1.  Log in to the Azure portal, click **All services** then **Subscriptions**. Select your subscription, then click **Usage + quotas**.
-    2.  From the **All providers** drop-down, select **Microsoft.Compute**.
-    3.  From the **All service quotas** drop down, select **Standard DSv3 Family vCPUs** and **Total Regional vCPUs**.
+    2.  From the **Select a provider** drop-down, select **Microsoft.Compute**.
+    3.  From the **All service quotas** drop down, select **Standard DSv3 Family vCPUs**, **Standard FSv2 Family vCPUs** and **Total Regional vCPUs**.
     4.  From the **All locations** drop down, select the location where you will deploy the lab.
-   
-        **NOTE:** We recommend deploying to the West US region where possible, since the lab deployment needs to copy several large VM images, which are hosted in West US. Deploying to other regions will work, but may extend the lab deployment time.
-
-    5.  Check that both of the selected quotas allow deployment of **at least 16 vCPUs**.
-
+    5.  From the last drop-down, select **Show all**.
+    6.  Check that the selected quotas have sufficient unused capacity:
+        - Standard DSv3 Family vCPUs: **at least 8 vCPUs**.
+        - Standard FSv2 Family vCPUs: **at least 6 vCPUs**.
+        - Total Regional vCPUs: **at least 14 vCPUs**.
+  
 3.  Your subscription must be registered for the Azure Migrate v2 Preview.  [Click here to apply.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3jsP9XEFE1ClBlDcwuVgRZUODNERjNTVjJSUVRBVllMNzhRVDFESVozRS4u)
 
 ## Before the hands-on lab
