@@ -56,15 +56,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Duration: 60 minutes
 
+You should follow all steps provided *before* performing the Hands-on lab.
+
 ### Task 1: Deploy the on-premises environment
 
 1.  Deploy the template **SmartHotelHost.json** to a new resource group. This template deploys a virtual machine running nested Hyper-V, with 4 nested VMs. This comprises the 'on-premises' environment which you will assess and migrate during this lab.
 
-    **NOTE:** We recommend deploying to the West US region where possible, since the lab deployment needs to copy several large VM images which are hosted in West US. Deploying to other regions will work, but may extend the lab deployment time.
-
-    The deployment uses several scripts to bootstrap the environment. No action is required, the process is entirely automatic. However, the bootstrap process continues to run after the template deployment is shown as complete in the Azure portal.
-
-    The template will take around an hour to deploy (longer if not using West US). Once the deployment is complete, wait 5 minutes before moving on to Task 2.
+    **NOTE:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
 
 ### Task 2: Verify the on-premises environment
 
@@ -72,9 +70,8 @@ Duration: 60 minutes
    
 2.  Make a note of the public IP address.
 
-3.  Open a browser window, and navigate to **http://ip-address**. You should see the SmartHotel application, which is running as nested VMs within Hyper-V on the SmartHotelHost.
+3.  Open a browser window, and navigate to **http://\<ip-address\>**. You should see the SmartHotel application, which is running as nested VMs within Hyper-V on the SmartHotelHost.
 
     ![Browser screenshot showing the SmartHotel application](/Images/BeforeTheHOL/SmartHotel.png)
 
-You should follow all steps provided *before* performing the Hands-on lab.
 
