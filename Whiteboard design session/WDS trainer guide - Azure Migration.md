@@ -204,7 +204,7 @@ The CTO, James Lynch, was hired 6 months ago from outside the company, with a ma
 
 In total, 448 servers and VMs have been identified to date, distributed across 5 main locations, all in the US. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate. Fear of breaking an existing system has been one of the drivers of server count and sprawl.
 
-To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
+To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment, as well as realizing substantial cost savings relative to their current infrastructure. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
 
 
 ### Customer needs 
@@ -231,6 +231,8 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 3.  Many applications comprise multiple components or tiers. How can you ensure that these migrations are appropriately orchestrated?
    
 4.  To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
+
+5.  We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
 
 
 ### Infographic for common scenarios
@@ -348,7 +350,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure advisor | https://azure.microsoft.com/services/advisor/ |
 | Azure enterprise scaffold | https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold |
 | Azure virtual datacenter | https://docs.microsoft.com/azure/architecture/vdc/ |
-
+| Building a cloud migration business case | https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case |
 
 
 # Line of business application migration whiteboard design session trainer guide
@@ -616,6 +618,12 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
     Similarly, data migration using DMS supports online migration, allowing you to keep your application online while data is synchronized, and to track the status of any pending changes. Only a short downtime window is required to cut over to the new database.
 
     In the event of an unexpected issue arising, the existing deployment remains available as a fail-back. If the issue is detected prior to cutting over production traffic to the new service, the on-premises server can immediately pick up where it left off. If the need to fail-back is identified only after the migrated service has received production traffic, then database changes may have occurred, which will need to be reverse-migrated to the on-premises system. This scenario is best avoided by ensuring the migration is properly tested. For critical applications the reverse-migration should be tested (in a test environment) in case it is required.
+
+5.  **Objection:** We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
+
+    **Answer:** It is a common myth that all workloads should move to the cloud, and that the cloud will automatically be cheaper. Careful planning will be required to optimize your Azure deployment, and a cost analysis performed to make sure the business case for migration is sound and fully understood.
+
+    The [Build a business justification for cloud migration](https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) guide is a useful resource for dispelling cloud adoption myths and building a realistic business case.
 
 ## Customer quote (to be read back to the attendees at the end)
 

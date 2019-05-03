@@ -78,7 +78,7 @@ The CTO, James Lynch, was hired 6 months ago from outside the company, with a ma
 
 In total, 448 servers and VMs have been identified to date, distributed across 5 main locations, all in the US. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate. Fear of breaking an existing system has been one of the drivers of server count and sprawl.
 
-To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
+To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment, as well as realizing substantial cost savings relative to their current infrastructure. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
 
 
 ### Customer needs 
@@ -106,6 +106,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
    
 4.  To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
 
+5.  We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
 
 ### Infographic for common scenarios
 
@@ -222,4 +223,4 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure advisor | https://azure.microsoft.com/services/advisor/ |
 | Azure enterprise scaffold | https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold |
 | Azure virtual datacenter | https://docs.microsoft.com/azure/architecture/vdc/ |
-
+| Building a cloud migration business case | https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case |
