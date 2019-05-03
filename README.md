@@ -41,6 +41,7 @@ At the end of this lab, you will be better able to execute migrations to Azure.
 - Azure Migrate
 - Azure Site Recovery
 - Azure Database Migration Service
+- Microsoft Data Migration Assistant
 
 ## Related references
 
