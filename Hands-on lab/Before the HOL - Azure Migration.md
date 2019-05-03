@@ -73,6 +73,6 @@ You should follow all steps provided *before* performing the Hands-on lab.
 
 3.  Open a browser window, and navigate to **http://\<ip-address\>**. You should see the SmartHotel application, which is running as nested VMs within Hyper-V on the SmartHotelHost.
 
-    ![Browser screenshot showing the SmartHotel application](/Images/BeforeTheHOL/SmartHotel.png)
+    ![Browser screenshot showing the SmartHotel application](Images/BeforeTheHOL/SmartHotel.png)
 
 
