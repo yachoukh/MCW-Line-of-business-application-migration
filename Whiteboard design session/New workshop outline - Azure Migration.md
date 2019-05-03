@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshop](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-[Insert workshop name here]
+Line of Business Application Migration
 </div>
 
 <div class="MCWHeader2">
@@ -9,10 +9,10 @@ New workshop outline
 </div>
 
 <div class="MCWHeader3">
-[Insert date here Month Year]
+May 2019
 </div>
 
-## \[Insert workshop title here\] outline
+## Line of Business Application Migration outline
 
   **Team**                        **Name**                            **Email**
   ------------------------------- ----------------------------------- ------------------------------------

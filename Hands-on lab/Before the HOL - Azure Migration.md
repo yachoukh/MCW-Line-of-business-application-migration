@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Azure Migration
+Line of Business Application Migration
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-April 2019
+May 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Azure Migrate before the hands-on lab setup guide](#azure-migrate-before-the-hands-on-lab-setup-guide)
+- [Line of business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task 1: Deploy the on-premises environment](#task-1-deploy-the-on-premises-environment)
@@ -34,7 +34,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Azure Migrate before the hands-on lab setup guide 
+# Line of business application migration before the hands-on lab setup guide 
 
 ## Requirements
 
@@ -62,6 +62,10 @@ You should follow all steps provided *before* performing the Hands-on lab.
 ### Task 1: Deploy the on-premises environment
 
 1.  Deploy the template **SmartHotelHost.json** to a new resource group. This template deploys a virtual machine running nested Hyper-V, with 4 nested VMs. This comprises the 'on-premises' environment which you will assess and migrate during this lab.
+
+    You can deploy the template by clicking on the 'Deploy to Azure' button below.
+
+    [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FMCW-Azure-Migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
     **NOTE:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
 

@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshop logo](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Azure Migration
+Line of Business Application Migration
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-April 2019
+May 2019
 </div>
 
 
@@ -27,7 +27,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Azure Migration hands-on lab step-by-step](#azure-migration-hands-on-lab-step-by-step)
+- [Line of business application migration hands-on lab step-by-step](#line-of-business-application-migration-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -65,7 +65,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Azure Migration hands-on lab step-by-step 
+# Line of business application migration hands-on lab step-by-step 
 
 ## Abstract and learning objectives 
 
@@ -110,11 +110,11 @@ The application, web, and web proxy tiers will be migrated to Azure VMs using Az
 
 3.  Your subscription must be registered for the Azure Migrate v2 Preview.
 
-For further details, see [Before the HOL - Azure Migration](./Before%20the%20HOL%20-%20Azure%20Migration.md).
+For further details, see [Before the HOL - Line of Business Application Migration](./Before%20the%20HOL%20-%20Azure%20Migration.md).
 
 ## Before the hands-on lab
 
-Refer to the [Before the HOL - Azure Migration](./Before%20the%20HOL%20-%20Azure%20Migration.md) setup guide manual before continuing to the lab exercises.
+Refer to the [Before the HOL - Line of Business Application Migration](./Before%20the%20HOL%20-%20Azure%20Migration.md) setup guide manual before continuing to the lab exercises.
 
 **Allow at least 60 minutes to deploy the on-premises environment before you start the lab.**
 
