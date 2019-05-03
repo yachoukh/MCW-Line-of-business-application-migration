@@ -42,10 +42,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 6: Explore dependency visualization](#task-6-explore-dependency-visualization)
   - [Exercise 2: Migrate the Application Database](#exercise-2-migrate-the-application-database)
     - [Overview](#overview-1)
-    - [Task 1: Create an Azure SQL Database](#task-1-create-an-azure-sql-database)
-    - [Task 2: Assess the on-premises database](#task-2-assess-the-on-premises-database)
-    - [Task 3: Migrate On-premises database schema](#task-3-migrate-on-premises-database-schema)
-    - [Task 4: Register the Microsoft.DataMigration resource provider](#task-4-register-the-microsoftdatamigration-resource-provider)
+    - [Task 1: Register the Microsoft.DataMigration resource provider](#task-1-register-the-microsoftdatamigration-resource-provider)
+    - [Task 2: Create an Azure SQL Database](#task-2-create-an-azure-sql-database)
+    - [Task 3: Assess the on-premises database](#task-3-assess-the-on-premises-database)
+    - [Task 4: Migrate On-premises database schema](#task-4-migrate-on-premises-database-schema)
     - [Task 5: Create the Database Migration Service](#task-5-create-the-database-migration-service)
     - [Task 6: Migrate the on-premises data](#task-6-migrate-the-on-premises-data)
   - [Exercise 3: Migrate the application and web tiers using Azure Site Recovery](#exercise-3-migrate-the-application-and-web-tiers-using-azure-site-recovery)
@@ -469,7 +469,32 @@ Duration: 60 minutes
 
 In this exercise you will migrate the application database from the on-premises Hyper-V virtual machine to a new database hosted in the Azure SQL Database service. You will use the Azure Database Migration Service to complete the migration, which uses the SQL Server Data Migration Assistant for the database assessment and schema migration phases.
 
-### Task 1: Create an Azure SQL Database
+### Task 1: Register the Microsoft.DataMigration resource provider
+
+Prior to using the Azure Database Migration Service, the resource provider **Microsoft.DataMigration** must be registered in the target subscription.
+
+1. In the Azure portal, select **All services**, and then select **Subscriptions**.
+
+    ![Screenshot showing the Azure portal click path to the 'Subscriptions' service](Images/Exercise2/subscriptions.png)
+
+2. Select the subscription in which you want to create the instance of the Azure Database Migration Service. You may need to un-check the global subscription filter to see all your subscriptions.
+
+    ![Screenshot showing a subscription being selected from the subscriptions list](Images/Exercise2/choose-subscription.png)
+
+3. In the subscription blade, select **Resource providers**. Search for **migration** and select **Microsoft.DataMigration**. If the resource provider status is unregistered, click **Register**.
+
+    ![Screenshot showing the Microsoft.DataMigration resource provider and 'Register' button](Images/Exercise2/register-rp.png)
+
+    > **Note**: It may take several minutes for the resource provider to register. You can proceed to the next task without waiting for the registration to complete. We will not use the resource provider until task 5.
+
+    ![Screenshot showing the resource provider 'registered' status](Images/Exercise2/registered-rp.png)
+
+#### Task summary <!-- omit in toc -->
+
+In this task you registered the **Microsoft.DataMigration** resource provider with your subscription. This enables this subscription to use the Azure Database Migration Service.
+
+
+### Task 2: Create an Azure SQL Database
 
 In this task you will create a new Azure SQL database to migrate the on-premises database to. You will also configure network access to the SQL database from the Hyper-V host that is running the SmartHotel application on-premises.
 
@@ -525,7 +550,7 @@ In this task you will create a new Azure SQL database to migrate the on-premises
 
 In this task you created an Azure SQL Database, and enabled network access to the database from the on-premises Hyper-V host.
 
-### Task 2: Assess the on-premises database
+### Task 3: Assess the on-premises database
 
 In this task you will install and use Microsoft SQL Server Data Migration Assistant (DMA) to assess an on-premises database.
 
@@ -578,7 +603,7 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
 In this task you used Data Migration Assistant to assess an on-premises database for readiness to migrate to Azure SQL.
 
-### Task 3: Migrate On-premises database schema
+### Task 4: Migrate On-premises database schema
 
 In this task you will use Microsoft Data Migration Assistant to migrate the database schema to Azure SQL Database. This is a prerequisite to migrating the database contents with the Azure Database Migration Service.
 
@@ -638,37 +663,13 @@ In this task you will use Microsoft Data Migration Assistant to migrate the data
 
 In this task you used Microsoft Data Migration Assistant to migrate the database schema to Azure SQL. This is a prerequisite to migrating the database contents with the Azure Database Migration Service.
 
-### Task 4: Register the Microsoft.DataMigration resource provider
-
-Prior to using the Azure Database Migration Service, the resource provider **Microsoft.DataMigration** must be registered in the target subscription.
-
-1. In the Azure portal, select **All services**, and then select **Subscriptions**.
-
-    ![Screenshot showing the Azure portal click path to the 'Subscriptions' service](Images/Exercise2/subscriptions.png)
-
-2. Select the subscription in which you want to create the instance of the Azure Database Migration Service. You may need to un-check the global subscription filter to see all your subscriptions.
-
-    ![Screenshot showing a subscription being selected from the subscriptions list](Images/Exercise2/choose-subscription.png)
-
-3. In the subscription blade, select **Resource providers**. Search for **migration** and select **Microsoft.DataMigration**. If the resource provider status is unregistered, click **Register**.
-
-    ![Screenshot showing the Microsoft.DataMigration resource provider and 'Register' button](Images/Exercise2/register-rp.png)
-
-    > **Note**: It can take several minutes for the provider to register. You cannot proceed until registration is completed. Click **Refresh** periodically to check the progress.
-
-    ![Screenshot showing the resource provider 'registered' status](Images/Exercise2/registered-rp.png)
-
-#### Task summary <!-- omit in toc -->
-
-In this task you registered the **Microsoft.DataMigration** resource provider with your subscription. This enables this subscription to use the Azure Database Migration Service.
-
 ### Task 5: Create the Database Migration Service
 
-In this task you will create an Azure Database Migration Service resource.
+In this task you will create an Azure Database Migration Service resource. This resource is managed by the Microsoft.DataMigration resource provider which you registered in task 1.
 
 > **Note:** The Azure Database Migrate Service (DMS) requires network access to your on-premises database to retrieve the data to transfer. To achieve this access, the DMS is deployed into an Azure VNet. You are then responsible for connecting that VNet securely to your database, for example by using a Site-to-Site VPN or ExpressRoute connection.
 > 
-> In this lab, the 'on-presmises' environment is simulated by a Hyper-V host running in an Azure VM. This VM is deployed to the 'smarthotelvnet' VNet. The DMS will be deployed to a separate VNet called 'DMSVnet'. To simulate the on-premises connection, these two VNet have been peered.
+> In this lab, the 'on-premises' environment is simulated by a Hyper-V host running in an Azure VM. This VM is deployed to the 'smarthotelvnet' VNet. The DMS will be deployed to a separate VNet called 'DMSVnet'. To simulate the on-premises connection, these two VNet have been peered.
 
 1. In the Azure portal, select **+ Create a resource**, search for **migration**, and then select **Azure Database Migration Service** from the drop-down list.
 
