@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Line of Business Application Migration
+Line-of-business application migration
 </div>
 
 <div class="MCWHeader2">
@@ -27,7 +27,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Line of business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
+- [Line-of-business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -41,7 +41,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-#  Line of business application migration whiteboard design session student guide
+#  Line-of-business application migration whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
@@ -71,15 +71,14 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft furnishing materials. Founded in 1972 and based in Columbus, Ohio, their business comprises three major product families (clothing, upholstery, and technical fabrics). Customers comprise familiar brand-name clothing manufacturers and furniture manufacturers, and also includes large-scale uniform suppliers to the US military. Turnover in 2018 exceeded 350 million USD.
 
 The CTO, James Lynch, was hired 6 months ago from outside the company, with a mandate to address ever-increasing IT costs. He has identified a sprawling IT estate, including a substantial legacy server footprint. New servers and services have been accumulated over time, without consolidating existing infrastructure. This includes:
-- Windows servers including both x32 and x64 hardware running Windows Server 2003 through to 2016
-- Linux servers running a mix of RHEL 6.10 and 7 series (7.2 through 7.6) and Ubuntu 16.04
-- The above servers comprise both physical machines as well as VMs hosted on VMware infrastructure managed by vCenter 6.5
-- Multiple database engines, including Microsoft SQL Server, PostgreSQL, and Cassandra
+- Windows servers including both x32 and x64 hardware running Windows Server 2003 through to 2016.
+- Linux servers running a mix of RHEL 6.10 and 7 series (7.2 through 7.6) and Ubuntu 16.04.
+- The above servers comprise both physical machines as well as VMs hosted on VMware infrastructure managed by vCenter 6.5.
+- Multiple database engines, including Microsoft SQL Server, PostgreSQL, and Cassandra.
 
 In total, 448 servers and VMs have been identified to date, distributed across 5 main locations, all in the US. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate. Fear of breaking an existing system has been one of the drivers of server count and sprawl.
 
 To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment, as well as realizing substantial cost savings relative to their current infrastructure. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
-
 
 ### Customer needs 
 
@@ -89,11 +88,11 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible
    
-3.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc) and their pros/cons
+4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons
    
-4.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
+5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
    
-5.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
+6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
    
 
 ### Customer objections 
@@ -132,7 +131,6 @@ Directions: With all participants at your table, answer the following questions 
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-
 *Migration Assessment*
 
 1.  How can Fabrikam assess their existing infrastructure for migration to Azure? Provide options for VMware VMs, physical servers, and databases.
@@ -143,23 +141,21 @@ Directions: With all participants at your table, respond to the following questi
    
 4.  What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
 
-
 *Migration Execution*
 
-5.  What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration?
 
-6.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
+2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
-7.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
-
+3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
 
 *Cost management and optimization*
 
-8.  How can Fabrikam estimate the future cost before a workload is migrated to Azure?
+1.  How can Fabrikam estimate the future cost before a workload is migrated to Azure?
    
-9.  How can Fabrikam optimize their cost estimate, prior to migration?
+2.  How can Fabrikam optimize their cost estimate, prior to migration?
    
-10. How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
+3. How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
 
 **Prepare**
 
