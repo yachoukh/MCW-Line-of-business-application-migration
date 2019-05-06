@@ -1,4 +1,4 @@
-# Azure Migration
+# Line of Business Application Migration
 
 Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft furnishing materials. The CTO, James Lynch, was hired 6 months ago with a mandate to address ever-increasing IT costs. He has identified a sprawling IT estate, including a substantial legacy server footprint with 448 servers and VMs identified to date. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate.
 
@@ -41,6 +41,7 @@ At the end of this lab, you will be better able to execute migrations to Azure.
 - Azure Migrate
 - Azure Site Recovery
 - Azure Database Migration Service
+- Microsoft Data Migration Assistant
 
 ## Related references
 

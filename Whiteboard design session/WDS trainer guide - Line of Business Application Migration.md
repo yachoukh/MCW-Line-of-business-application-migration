@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Azure Migration
+Line of Business Application Migration
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-March 2019
+May 2019
 </div>
 
 
@@ -32,7 +32,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Azure migration whiteboard design session student guide](#azure-migration-whiteboard-design-session-student-guide)
+- [Line of business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -43,7 +43,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
-- [Azure migration whiteboard design session trainer guide](#azure-migration-whiteboard-design-session-trainer-guide)
+- [Line of business application migration whiteboard design session trainer guide](#line-of-business-application-migration-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -167,7 +167,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-#  Azure migration whiteboard design session student guide
+#  Line of business application migration whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
@@ -204,7 +204,7 @@ The CTO, James Lynch, was hired 6 months ago from outside the company, with a ma
 
 In total, 448 servers and VMs have been identified to date, distributed across 5 main locations, all in the US. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate. Fear of breaking an existing system has been one of the drivers of server count and sprawl.
 
-To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
+To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment, as well as realizing substantial cost savings relative to their current infrastructure. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
 
 
 ### Customer needs 
@@ -231,6 +231,8 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 3.  Many applications comprise multiple components or tiers. How can you ensure that these migrations are appropriately orchestrated?
    
 4.  To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
+
+5.  We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
 
 
 ### Infographic for common scenarios
@@ -348,10 +350,10 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure advisor | https://azure.microsoft.com/services/advisor/ |
 | Azure enterprise scaffold | https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold |
 | Azure virtual datacenter | https://docs.microsoft.com/azure/architecture/vdc/ |
+| Building a cloud migration business case | https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case |
 
 
-
-# Azure migration whiteboard design session trainer guide
+# Line of business application migration whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
@@ -616,6 +618,12 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
     Similarly, data migration using DMS supports online migration, allowing you to keep your application online while data is synchronized, and to track the status of any pending changes. Only a short downtime window is required to cut over to the new database.
 
     In the event of an unexpected issue arising, the existing deployment remains available as a fail-back. If the issue is detected prior to cutting over production traffic to the new service, the on-premises server can immediately pick up where it left off. If the need to fail-back is identified only after the migrated service has received production traffic, then database changes may have occurred, which will need to be reverse-migrated to the on-premises system. This scenario is best avoided by ensuring the migration is properly tested. For critical applications the reverse-migration should be tested (in a test environment) in case it is required.
+
+5.  **Objection:** We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
+
+    **Answer:** It is a common myth that all workloads should move to the cloud, and that the cloud will automatically be cheaper. Careful planning will be required to optimize your Azure deployment, and a cost analysis performed to make sure the business case for migration is sound and fully understood.
+
+    The [Build a business justification for cloud migration](https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) guide is a useful resource for dispelling cloud adoption myths and building a realistic business case.
 
 ## Customer quote (to be read back to the attendees at the end)
 
