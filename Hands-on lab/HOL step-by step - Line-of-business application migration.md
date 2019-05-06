@@ -294,7 +294,7 @@ The next step is to register our Hyper-V host with the Azure Migrate appliance. 
     
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing a green check mark labelled 'Created Site and initiating discovery'.](Images/Exercise1/appliance-config-9b.png)
 
-16. Return to the Azure Migrate blade in the Azure portal. (If re-opening the portal, remember to use the URL https://aka.ms/migrate/preview during the Azure Migrate preview phase.)  Click on **Servers**, make sure the **Subscription** and **Resource group** have been specified correctly. Under 'Azure Migrate: Server Assessment' you should see a count of the number of servers dicovered so far. Click **Refresh** periodically until 5 discovered servers are shown. This will take several minutes.
+16. Return to the Azure Migrate blade in the Azure portal. (If re-opening the portal, remember to use the URL https://aka.ms/migrate/preview during the Azure Migrate preview phase.)  Click on **Servers**, make sure the **Subscription** and **Resource group** have been specified correctly. Under 'Azure Migrate: Server Assessment' you should see a count of the number of servers discovered so far. Click **Refresh** periodically until 5 discovered servers are shown. This will take several minutes.
     
     ![Screenshot of the Azure Migrate portal blade. Under 'Azure Migrate: Server Assessment' the value for 'discovered servers' is '5'.](Images/Exercise1/discovered-servers.png)
 
@@ -713,7 +713,7 @@ In this task you will create a migration project in the Azure Database Migration
 
 4. In the **Migration source detail** blade, enter the following values and click **Save**.
 
-    - Source SQL Server instance instance name: **10.0.0.4**
+    - Source SQL Server instance name: **10.0.0.4**
     - Authentication type: **SQL Authentication**
     - User Name: **sa**
     - Password: **demo@pass123**
@@ -736,7 +736,7 @@ In this task you will create a migration project in the Azure Database Migration
 
     ![Screenshot showing the Azure SQL Database server name.](Images/Exercise2/sql-db-name.png)
 
-6. The **Map to target databases** step allows you to specify which source database should be migrated to which target databas (DMS supports migrating multiple databases in a single migration project). Select **SmartHotel.Registration** for the *Source database* and **smarthoteldb** for the *Target database*. Click **Save**.
+6. The **Map to target databases** step allows you to specify which source database should be migrated to which target database (DMS supports migrating multiple databases in a single migration project). Select **SmartHotel.Registration** for the *Source database* and **smarthoteldb** for the *Target database*. Click **Save**.
 
     ![Screenshot from DMS showing how the mapping between source and destination database is configured.](Images/Exercise2/map-target-db.png)
         
@@ -921,7 +921,7 @@ In this task you will configure Azure Site Recovery by creating a Hyper-V Site t
 
    ![Screenshot of the ASR 'Prepare source' and 'Create Hyper-V site' blades.](Images/Exercise3/create-site.png)
 
-6. Click **+ Hyper-V Server**. In the **Add Server** blade, right-click the Download link for the Microsoft Azure Site Recovery Provider installer, and copy the link to the clipboard. Open the SmartHotelHost remote desktop window, launch **Chrom,e** from the desktop shortcut, and paste the link into a new browser tab to download the Azure Site Recovery provider installer.
+6. Click **+ Hyper-V Server**. In the **Add Server** blade, right-click the Download link for the Microsoft Azure Site Recovery Provider installer, and copy the link to the clipboard. Open the SmartHotelHost remote desktop window, launch **Chrome** from the desktop shortcut, and paste the link into a new browser tab to download the Azure Site Recovery provider installer.
 
    Return to your browser and download the vault registration key. Save the file locally, then copy the file and paste it to the desktop of the SmartHotelHost in the remote desktop window.
 
@@ -1132,7 +1132,7 @@ The application tier VM **smarthotelweb2** is configured to connect to the appli
 
 On the migrated VM **smarthotelweb2-test**, this configuration needs to be updated to use the Azure SQL Database.
 
-As a preliminary step, you will temporarily associate a public IP address with the **smarthotelweb2** VM, so that you can connect to it using Remote Desktop. (Alternatively, your could connect via a separate 'jumppbox' VM or via a Site-to-Site or ExpressRoute connection.)
+As a preliminary step, you will temporarily associate a public IP address with the **smarthotelweb2** VM, so that you can connect to it using Remote Desktop. (Alternatively, you could connect via a separate 'jumppbox' VM or via a Site-to-Site or ExpressRoute connection.)
 
 > **Note:** You do not need to update any configuration files on **smarthotelweb1-test** or the **UbuntuWAF-test** VMs, since the migration has preserved the private IP addresses of all virtual machines they connect with.
 
@@ -1224,7 +1224,7 @@ In this task you configured the public IP address for the SmartHotel application
 
 ### Task 11: Cleanup the test failover
 
-In this task you will cleanup the test failover of the application. This deletes the resources created during the test failover and marks the test failover as complete.
+In this task you will clean up the test failover of the application. This deletes the resources created during the test failover and marks the test failover as complete.
 
 1. Navigate to your Recovery Services Vault in the Azure portal. Click on **Recovery Plans (Site Recovery)** and select the **SmartHotelRecovery** plan. Click **Cleanup test failover**.
 
