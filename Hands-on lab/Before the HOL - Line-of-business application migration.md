@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Line of Business Application Migration
+Line-of-business application migration
 </div>
 
 <div class="MCWHeader2">
@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Line of business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
+- [Line-of-business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task 1: Deploy the on-premises environment](#task-1-deploy-the-on-premises-environment)
@@ -34,19 +34,19 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Line of business application migration before the hands-on lab setup guide 
+# Line-of-business application migration before the hands-on lab setup guide 
 
 ## Requirements
 
 1.  You will need Owner or Contributor permissions for an Azure subscription to use in the lab.
 
 2.  Your subscription must have sufficient unused quota to deploy the VMs used in this lab. To check your quota:
-    1.  Log in to the Azure portal, click **All services** then **Subscriptions**. Select your subscription, then click **Usage + quotas**.
-    2.  From the **Select a provider** drop-down, select **Microsoft.Compute**.
-    3.  From the **All service quotas** drop down, select **Standard DSv3 Family vCPUs**, **Standard FSv2 Family vCPUs** and **Total Regional vCPUs**.
-    4.  From the **All locations** drop down, select the location where you will deploy the lab.
-    5.  From the last drop-down, select **Show all**.
-    6.  Check that the selected quotas have sufficient unused capacity:
+    -  Log in to the Azure portal, click **All services** then **Subscriptions**. Select your subscription, then click **Usage + quotas**.
+    -  From the **Select a provider** drop-down, select **Microsoft.Compute**.
+    -  From the **All service quotas** drop down, select **Standard DSv3 Family vCPUs**, **Standard FSv2 Family vCPUs** and **Total Regional vCPUs**.
+    -  From the **All locations** drop down, select the location where you will deploy the lab.
+    -  From the last drop-down, select **Show all**.
+    -  Check that the selected quotas have sufficient unused capacity:
         - Standard DSv3 Family vCPUs: **at least 8 vCPUs**.
         - Standard FSv2 Family vCPUs: **at least 6 vCPUs**.
         - Total Regional vCPUs: **at least 14 vCPUs**.
@@ -57,8 +57,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Duration: 60 minutes
 
-You should follow all steps provided *before* performing the Hands-on lab.
-
 ### Task 1: Deploy the on-premises environment
 
 1.  Deploy the template **SmartHotelHost.json** to a new resource group. This template deploys a virtual machine running nested Hyper-V, with 4 nested VMs. This comprises the 'on-premises' environment which you will assess and migrate during this lab.
@@ -67,7 +65,7 @@ You should follow all steps provided *before* performing the Hands-on lab.
 
     [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FMCW-Azure-Migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
-    **NOTE:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
+    >**Note**: The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
 
 ### Task 2: Verify the on-premises environment
 
@@ -79,4 +77,4 @@ You should follow all steps provided *before* performing the Hands-on lab.
 
     ![Browser screenshot showing the SmartHotel application](Images/BeforeTheHOL/smarthotel.png)
 
-
+You should follow all steps provided *before* performing the Hands-on lab.
