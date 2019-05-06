@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Line of Business Application Migration
+Line-of-business application migration
 </div>
 
 <div class="MCWHeader2">
@@ -32,7 +32,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Line of business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
+- [Line-of-business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -43,7 +43,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
-- [Line of business application migration whiteboard design session trainer guide](#line-of-business-application-migration-whiteboard-design-session-trainer-guide)
+- [Line-of-business application migration whiteboard design session trainer guide](#line-of-business-application-migration-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -167,14 +167,13 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-#  Line of business application migration whiteboard design session student guide
+#  Line-of-business application migration whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
 In this whiteboard design session, you will look at how to design an Azure migration for a heterogenous customer environment. The existing infrastructure comprises both Windows and Linux servers running on both VMWare and physical machines, and includes some legacy servers. Throughout the whiteboard design session, you will look at the various options and services available to migrate heterogenous environments to Azure.
 
 At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate, Azure Database Migration Service, and Azure Site Recovery.
-
 
 ## Step 1: Review the customer case study 
 
@@ -206,7 +205,6 @@ In total, 448 servers and VMs have been identified to date, distributed across 5
 
 To address this, James has proposed to the board that Fabrikam should migrate as much of the existing IT infrastructure as possible to the cloud. As well as eliminating IT infrastructure overheads, this will be an opportunity to 'clean house' and create a modern, fit-for-purpose IT environment, as well as realizing substantial cost savings relative to their current infrastructure. The board have agreed, and Microsoft Azure has been selected as the cloud provider.
 
-
 ### Customer needs 
 
 1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required
@@ -215,13 +213,12 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible
    
-3.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc) and their pros/cons
+4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons
    
-4.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
+5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
    
-5.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
+6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
    
-
 ### Customer objections 
 
 1.  Owners of each business application need to approve any substantial application change, including migration. Business owners have indicated that they will require evidence that migration will be successful before granting approval.
@@ -233,7 +230,6 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 4.  To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
 
 5.  We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
-
 
 ### Infographic for common scenarios
 
@@ -259,7 +255,6 @@ Directions: With all participants at your table, answer the following questions 
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-
 *Migration Assessment*
 
 1.  How can Fabrikam assess their existing infrastructure for migration to Azure? Provide options for VMware VMs, physical servers, and databases.
@@ -270,23 +265,21 @@ Directions: With all participants at your table, respond to the following questi
    
 4.  What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
 
-
 *Migration Execution*
 
-5.  What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration?
 
-6.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
+2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
-7.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
-
+2.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
 
 *Cost management and optimization*
 
-8.  How can Fabrikam estimate the future cost before a workload is migrated to Azure?
+1.  How can Fabrikam estimate the future cost before a workload is migrated to Azure?
    
-9.  How can Fabrikam optimize their cost estimate, prior to migration?
+2.  How can Fabrikam optimize their cost estimate, prior to migration?
    
-10. How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
+3. How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
 
 **Prepare**
 
@@ -398,7 +391,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 ##  Preferred target audience
 
 - James Lynch, CTO
-- Relevant IT department heads under James (e.g. Head of Operations, Head of Application Development, etc)
+- Relevant IT department heads under James (e.g. Head of Operations, Head of Application Development, etc.)
 - Business application owners
 - CFO - to understand cost implications, including the CapEx/OpEx switch
 - CSO - to understand security implications
@@ -407,9 +400,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 *Migration Assessment*
 
-1.  **Design:** How can Fabrikam assess their existing infrastructure for migration to Azure? Provide options for VMware VMs, physical servers, and databases.
+1.  How can Fabrikam assess their existing infrastructure for migration to Azure? Provide options for VMware VMs, physical servers, and databases.
 
-    **Solution:** For VMware VMs, Fabrikam should use Azure Migrate to assess their readiness for migration to Azure. Azure Migrate supports migration assessment for VMware workloads managed by vCenter version 5.5, 6.0, 6.5 or 7.0. Hyper-V support is in Preview, with production workload support.
+    For VMware VMs, Fabrikam should use Azure Migrate to assess their readiness for migration to Azure. Azure Migrate supports migration assessment for VMware workloads managed by vCenter version 5.5, 6.0, 6.5 or 7.0. Hyper-V support is in Preview, with production workload support.
 
     Azure Migrate is a fully-managed Azure service. Migration assessment occurs in two major phases: discovery and assessment. In the discovery phase, a collector appliance VM is deployed into the on-premises environment to gather raw data on the VMs to be migrated. This data includes static VM information (such as CPU, memory, disk configuration, OS and identification of key workloads such as databases) together with utilization metrics. These metrics are gathered over time, so it is important to gather data over a representative time period, especially for workloads with irregular usage patterns (for example, to generate daily, weekly or monthly reports).
     
@@ -443,9 +436,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
     
     - For Cassandra databases, once again there is no assessment tool specialized to this scenario. Existing Cassandra databases can be migrated to Cassandra running in Azure VMs, or preferable to Azure Cosmos DB, which provides Cassandra compatibility together with the advantages of a fully-managed service.
 
-2.  **Design:** How can Fabrikam identify dependencies between their existing servers? How can they use this information in their migration planning?
+2.  How can Fabrikam identify dependencies between their existing servers? How can they use this information in their migration planning?
 
-    **Solution:** Azure Migrate dependency visualization provides in-depth analysis of processes and network dependencies for each assessed VM. It is extremely useful for identifying non-obvious network dependencies, such as Kerberos, DNS, certificate revocation checks, and so on.
+    Azure Migrate dependency visualization provides in-depth analysis of processes and network dependencies for each assessed VM. It is extremely useful for identifying non-obvious network dependencies, such as Kerberos, DNS, certificate revocation checks, and so on.
 
     ![Azure portal screenshot showing the Azure Migrate dependency visualization](images/dependency_visualization.png)
 
@@ -455,9 +448,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     ![Azure portal screenshot showing links and instructions to install the Microsoft Monitoring Agent and Dependency Agent](images/agent_install.png)
 
-3.  **Design:** What criteria should Fabrikam use to prioritize their migrations when building a migration road map?
+3.  What criteria should Fabrikam use to prioritize their migrations when building a migration road map?
 
-    **Solution:** When kicking off a migration program, it's important to start with some quick wins. This builds confidence and experience. The first services to migrate should be isolated, non-critical workloads without unusual technical requirements, for which migration should be very straightforward. Typical examples include marketing websites and internal tools.
+    When kicking off a migration program, it's important to start with some quick wins. This builds confidence and experience. The first services to migrate should be isolated, non-critical workloads without unusual technical requirements, for which migration should be very straightforward. Typical examples include marketing websites and internal tools.
 
     The migration road map should assess the workloads based primarily on business criticality and migration complexity. Complexity should be broken down into considerations of security, compliance, availability, scale, performance, manageability and costs. Also, the migration approach should be considered, with a straightforward 'lift and shift' offering fewer risks and a faster migration than a specialized refactoring or re-architecting of the existing application.
 
@@ -469,9 +462,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     ![Diagram showing Microsoft IT's cloud journey, and what proportion of applications was rehosted, refactored, retired, etc](images/microsoft_it_journey_to_cloud.png)
 
-4.  **Design:** What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
+4.  What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
 
-    **Solution:** Where lift-and-shift re-hosting in Azure VMs is not possible, a different approach will be required. There are a number of options available.
+    Where lift-and-shift re-hosting in Azure VMs is not possible, a different approach will be required. There are a number of options available.
 
     Firstly, consider if the workload can simply be retired. The application may have few users, and their needs may be met in other ways. Organizations build legacy over time, and it is common to identify some applications that can be retired when creating a migration roadmap.
 
@@ -483,9 +476,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 *Migration Execution*
 
-5.  **Design:** What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration?
 
-    **Solution:** Before migrating your first application, the Azure environment should be prepared. This includes:
+    Before migrating your first application, the Azure environment should be prepared. This includes:
     - Planning and creating Azure subscriptions
     - Planning the network: Azure virtual networks, including address spaces and subnets; network security devices such as Application Gateways or third-party devices; Active Directory and name resolution; on-premises connectivity
     - Defining best practices for Azure deployments, such as resource group structure, choice of region, use of templates, resource naming convention and use of resource locks
@@ -494,16 +487,16 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.com/azure/architecture/vdc/) and [Azure Enterprise Scaffold](https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold) documentation in the Azure Architecture Center.
 
-6.  **Design:** What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
+2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
-    **Solution:** Broadly speaking, there are three approaches to a lift-and-shift server migration:
+    Broadly speaking, there are three approaches to a lift-and-shift server migration:
     - Create the Azure environment, including VMs, and re-install the application from scratch
     - Port existing disks to Azure, and stand up a new Azure environment using those disks
     - Use a migration tool to port the existing environment to Azure
 
     A clean install has the advantage of creating a clean target environment, free of any legacy. It is also an opportunity to perform upgrades, for example to a newer OS version. However, it requires knowledge of the installation process and access to installation tools, neither of which may be available in practice in the case of legacy applications. It can also be time-consuming, and may incur a longer application downtime than using purpose-built migration tools.
 
-    Porting existing disks avoids the need to re-install the application. However, it can require extended downtime since it may be difficult to perform while the application is still running. Stateful servers should be ported as disks, where as stateless servers should be ported as disk images, allowing multiple Azure VMs to be created from a single image. Data can be transferred either online using the AzCopy tool, or offline using the Azure Import/Export service or Azure Data Box.
+    Porting existing disks avoids the need to re-install the application. However, it can require extended downtime since it may be difficult to perform while the application is still running. Stateful servers should be ported as disks, whereas stateless servers should be ported as disk images, allowing multiple Azure VMs to be created from a single image. Data can be transferred either online using the AzCopy tool, or offline using the Azure Import/Export service or Azure Data Box.
 
     Disks must be in fixed-size 'VHD' format. Hyper-V VHDX format disks must be converted, using Hyper-V Manager or the Convert-VHD PowerShell cmdlet. Note also that only 'Generation 1' Hyper-V VMs can be ported to Azure in this way. VMware disks in VMDK format can be converted to VHDs using the Microsoft VM Converter tool. Physical disks can be converted using the disk2vhd tool from SysInternals, however this only supports Windows, not Linux.
     
@@ -531,9 +524,9 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     For Cassandra databases, data can be copied using the CQL COPY command, or by provisioning an Azure Databricks deployment and using the table copy operation. Instructions for both methods are provided on the Azure Database Migration Guide, at https://datamigration.microsoft.com/scenario/cassandra-to-cosmos?step=1. Alternatively, the same guide also includes a [table of third-party migration tools](https://docs.microsoft.com/en-ie/azure/dms/dms-tools-matrix#migration-phase), and suggests Imanis Data as a potential migration tool in this case.
 
-7.  **Design:** What post-migration steps should be carried out for business-critical applications migrated to Azure?
+3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
 
-    **Solution:** An application should not be considered production-ready immediately upon completion of the migration process. A number of additional steps should be taken to harden the application for security, manageability and availability. These include:
+    An application should not be considered production-ready immediately upon completion of the migration process. A number of additional steps should be taken to harden the application for security, manageability and availability. These include:
     - Uninstall the Mobility Service Agent (installed  during the ASR migration process)
     - Install the [Azure VM agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). This provides a number of critical manageability features for Azure VMs, including support for VM extensions and password reset.
     - Configure Azure Backup
@@ -546,9 +539,9 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
 *Cost management and optimization*
 
-8.  **Design:** How can Fabrikam estimate the future cost before a workload is migrated to Azure?
+1.  How can Fabrikam estimate the future cost before a workload is migrated to Azure?
    
-    **Solution:** Azure Migrate will provide a cost estimate for each migrated workload as part of each migration assessment. This estimate factors in the assessment parameters, such as VM family and size, hours of operation, etc. Azure Migrate downloads the rate card for your subscription from the Azure billing APIs, so any eligible discounts are applied automatically. Be sure to deploy Azure Migrate to a subscription that qualifies for the same billing rates as your production subscriptions.
+    Azure Migrate will provide a cost estimate for each migrated workload as part of each migration assessment. This estimate factors in the assessment parameters, such as VM family and size, hours of operation, etc. Azure Migrate downloads the rate card for your subscription from the Azure billing APIs, so any eligible discounts are applied automatically. Be sure to deploy Azure Migrate to a subscription that qualifies for the same billing rates as your production subscriptions.
 
     ![Azure portal screenshot of the Azure Migrate assessment configuration options](images/migration_assessment_configuration.png)
 
@@ -558,9 +551,9 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     Third-party tools used for migration assessment of physical servers will also provide cost estimates for the migrated workload. For details such as use of discounted rates, check with the vendor.
 
-9.  **Design:** How can Fabrikam optimize their cost estimate, prior to migration?
+2.  How can Fabrikam optimize their cost estimate, prior to migration?
 
-    **Solution:** For VMware, Fabrikam should use the configuration parameters in Azure Migrate available to tune their migration assessment. Many of these parameters will have an impact on the cost estimate. They include:
+    For VMware, Fabrikam should use the configuration parameters in Azure Migrate available to tune their migration assessment. Many of these parameters will have an impact on the cost estimate. They include:
     - Azure region
     - VM pricing tier (Basic or Standard)
     - Disk type (Standard HDD, Standard SSD, Premium SSD)
@@ -573,12 +566,12 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     For physical environments, Fabrikam should take a similar approach of tuning their migration assessment using parameters similar to those listed above, as supported by the third-party migration tool chosen or by using the Azure pricing calculator.
 
-10.  **Design:** How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
+3.  How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
 
-    **Solution:** As part of their regular operations, Fabrikam should periodically review their deployments to ensure they are optimized for cost efficiency. This review should include:
+    As part of their regular operations, Fabrikam should periodically review their deployments to ensure they are optimized for cost efficiency. This review should include:
     - Does the solution make full use of the provisioned VM sizes or PaaS service SKUs? Can the services be moved to fewer or cheaper VMs, or to a lower-cost service SKU? Be aware that new VM families may offer better performance at lower cost than older VM families.
     - Does the solution run 24x7? Does it need to? Can costs be reduced by turning off or reducing the footprint at night or at weekends? This is easily implemented using the [Start/stop VMs during off hours](https://docs.microsoft.com/azure/automation/automation-solution-vm-management) solution from the Azure Marketplace.
-    - Can auto-scale be used to further optimize the delpoyment footprint?
+    - Can auto-scale be used to further optimize the deployment footprint?
     - Can Azure discount programs, such as Hybrid Benefit or Reserved Instances, be used to reduce costs?
     - Are supporting services, such as Azure Site Recovery, Azure Backup, and Log Analytics being used efficiently? For example, for a stateless web server, is Azure Backup required, or would simple disk snapshots suffice? (Can you use a Web App instead?)
     - Are there any cost recommendations in Azure Advisor?
@@ -589,43 +582,43 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
 ## Checklist of preferred objection handling
 
-1.  **Objection:** Owners of each business application need to approve any substantial application change, including migration. Business owners have indicated that they will require evidence that migration will be successful before granting approval.
+1.  Owners of each business application need to approve any substantial application change, including migration. Business owners have indicated that they will require evidence that migration will be successful before granting approval.
 
-    **Answer:** Migration projects should include creation of a proof of concept deployment, to validate the overall architecture and any assumptions, for example regarding the impact of changes to network latency between application components. This helps build confidence in Azure as a platform for hosting the application.
+    Migration projects should include creation of a proof of concept deployment, to validate the overall architecture and any assumptions, for example regarding the impact of changes to network latency between application components. This helps build confidence in Azure as a platform for hosting the application.
 
     For the migration process itself, Azure Site Recovery supports a 'test failover'. This creates the Azure deployment in parallel with the existing deployment, allowing the migration process to be verified without risk of production impact. Likewise, database migration using DMS does not impact the existing production database.
 
     Third-party migration tools used for migration of physical servers similarly support a validation step prior to committing the migration.
     
-2.  **Objection:** Fabrikam have negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+2.  Fabrikam have negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
-    **Answer:** Not a problem! Cost estimates from both Azure Migrate and the Azure Pricing Calculator can be tailored to reflect your EA discount.
+    Not a problem! Cost estimates from both Azure Migrate and the Azure Pricing Calculator can be tailored to reflect your EA discount.
 
-3.  **Objection:** Many applications comprise multiple components or tiers. How can you ensure that these migrations are appropriately orchestrated?
+3.  Many applications comprise multiple components or tiers. How can you ensure that these migrations are appropriately orchestrated?
    
-    **Answer:** Using Azure Site Recovery, VMs can be grouped to reflect the application architecture. The dependency visualization feature of Azure Migrate helps identify and configure these groupings.
+    Using Azure Site Recovery, VMs can be grouped to reflect the application architecture. The dependency visualization feature of Azure Migrate helps identify and configure these groupings.
 
     The migration process can then be staged to migrate different groups of VMs separately. Custom scripts can be used to perform custom pre- and post-migration operations.
 
     Similar orchestration is also supported by third-party migration tools, used for physical servers.
 
-4.  **Objection:** To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
+4.  To reduce business impact, each migration should be designed to minimize application downtime. In addition, to reduce risk, there must be an option to fail-back should the migration experience an unexpected problem.
  
-    **Answer:** Migration will always be designed to create the new application deployment in parallel with the existing deployment. This applies to all application tiers, including the database.
+    Migration will always be designed to create the new application deployment in parallel with the existing deployment. This applies to all application tiers, including the database.
 
     To ensure data consistency during migration, a short application downtime may be required. For application servers migrated using ASR, incremental replication keeps the duration of this downtime to a minimum, since the initial data transfer can happen while the application is on-line so only deltas need be synchronized during the migration window.
     
     Similarly, data migration using DMS supports online migration, allowing you to keep your application online while data is synchronized, and to track the status of any pending changes. Only a short downtime window is required to cut over to the new database.
 
-    In the event of an unexpected issue arising, the existing deployment remains available as a fail-back. If the issue is detected prior to cutting over production traffic to the new service, the on-premises server can immediately pick up where it left off. If the need to fail-back is identified only after the migrated service has received production traffic, then database changes may have occurred, which will need to be reverse-migrated to the on-premises system. This scenario is best avoided by ensuring the migration is properly tested. For critical applications the reverse-migration should be tested (in a test environment) in case it is required.
+    In the event of an unexpected issue arising, the existing deployment remains available as a fail-back. If the issue is detected prior to cutting over production traffic to the new service, the on-premises server can immediately pick up where it left off. If the need to fail-back is identified only after the migrated service has received production traffic, then database changes may have occurred, which will need to be reverse-migrated to the on-premises system. This scenario is best avoided by ensuring the migration is properly tested. For critical applications, the reverse-migration should be tested (in a test environment) in case it is required.
 
-5.  **Objection:** We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
+5.  We are expecting to move all our existing infrastructure to Azure. Reducing our on-premises server costs should provide substantial cost savings. Can you confirm what savings we can expect?
 
-    **Answer:** It is a common myth that all workloads should move to the cloud, and that the cloud will automatically be cheaper. Careful planning will be required to optimize your Azure deployment, and a cost analysis performed to make sure the business case for migration is sound and fully understood.
+    It is a common myth that all workloads should move to the cloud, and that the cloud will automatically be cheaper. Careful planning will be required to optimize your Azure deployment, and a cost analysis performed to make sure the business case for migration is sound and fully understood.
 
     The [Build a business justification for cloud migration](https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) guide is a useful resource for dispelling cloud adoption myths and building a realistic business case.
 
 ## Customer quote (to be read back to the attendees at the end)
 
-James Lynch, CTO: *We chose Azure as our strategic cloud platform, due to the breadth of services offered and wide range of tools available to support migrating our existing workloads. Despite a complex, legacy on-premises environment we have now completed the bulk of our Azure migrations, without incident, in under 9 months. Our applications are now faster, more reliable, and cheaper and easier to operate and maintain.*
+"We chose Azure as our strategic cloud platform, due to the breadth of services offered and wide range of tools available to support migrating our existing workloads. Despite a complex, legacy on-premises environment we have now completed the bulk of our Azure migrations, without incident, in under 9 months. Our applications are now faster, more reliable, and cheaper and easier to operate and maintain."  - James Lynch, CTO
 
