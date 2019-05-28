@@ -114,6 +114,28 @@ Function Follow-Redirect {
     return $actualUrl
 }
 
+Function Wait-For-Website {
+    Param (
+        [string]$Url
+    )
+
+    $i = 1
+    while ($true) {
+
+        try {
+            Write-Output "Checking ($i)...please wait"
+            $i++
+
+            $response = Invoke-WebRequest -Uri $Url -TimeoutSec 10 -UseBasicParsing
+            if ($response.StatusCode -eq 200) {
+                return;
+            }
+        } catch {}
+
+        Start-Sleep 2
+    }
+}
+
 $ErrorActionPreference = 'SilentlyContinue'
 Import-Module BitsTransfer
 
@@ -131,26 +153,23 @@ Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
     -Value "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -executionPolicy Unrestricted -File $opsDir\OnLoginConfigure.ps1"
 
 # Download AzCopy. We won't use the aks.ms/downloadazcopy link in case of breaking changes in later versions
-$azcopyUrl = "https://azcopy.azureedge.net/azcopy-8-1-0/MicrosoftAzureStorageAzCopy_netcore_x64.msi"
-$azcopyMsi = "$tempDir\azcopy.msi"
-Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyMsi
+$azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/azcopy_windows_amd64_10.1.1.zip"
+$azcopyZip = "$opsDir\azcopy.zip"
+Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyZip
+$azcopyZipfile = Get-ChildItem -Path $azcopyZip
+Unzip-Files -Files $azcopyZipfile -Destination $opsDir
 
-# Install AzCopy
-$arguments = "/i",$azcopyMsi,"/q"
-Start-Process -FilePath msiexec.exe -ArgumentList $arguments -Wait
-$azcopy = '"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\AzCopy.exe"'
+$azcopy = "$opsDir\azcopy_windows_amd64_10.1.1\azcopy.exe"
 
 # Download SmartHotel VMs from blob storage
-$container = 'https://cloudworkshop.blob.core.windows.net/azure-migration'
+# Also download Azure Migrate appliance (saves time in lab lter)
+$container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration'
 
-cmd /c "$azcopy /Source:$container/SmartHotelWeb1.zip /Dest:$tempDir\SmartHotelWeb1.zip"
-cmd /c "$azcopy /Source:$container/SmartHotelWeb2.zip /Dest:$tempDir\SmartHotelWeb2.zip"
-cmd /c "$azcopy /Source:$container/SmartHotelSQL1.zip /Dest:$tempDir\SmartHotelSQL1.zip"
-cmd /c "$azcopy /Source:$container/UbuntuWAF.zip /Dest:$tempDir\UbuntuWAF.zip"
-
-# Download the Azure Migrate appliance to save time during the lab
-$migrateApplianceUrl = Follow-Redirect("https://aka.ms/migrate/appliance/hyperv")
-Start-BitsTransfer -Source $migrateApplianceUrl -Destination "$tempDir\AzureMigrateAppliance.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v1.19.05.10.zip $tempDir\AzureMigrate.zip"
 
 # Unzip the VMs
 $zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
@@ -199,3 +218,6 @@ Get-VM | Set-VM -AutomaticStartAction Start -AutomaticStopAction ShutDown
 
 # Start all the VMs
 Get-VM | Start-VM
+
+# Ping website to warm it up
+Wait-For-Website('http://192.168.0.8')

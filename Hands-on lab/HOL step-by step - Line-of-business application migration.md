@@ -92,7 +92,7 @@ The SmartHotel application comprises 4 VMs hosted in Hyper-V:
 
 >**Note:** For convenience, the Hyper-V host itself is deployed as an Azure VM. For the purposes of the lab, you should think of it as an on-premises machine.
 
-![](Images/overview.png)
+![A slide shows the on-premises SmartHotel application architecture. This comprises a SmartHotelHost server running Microsoft Hyper-V. This server hosts 4 VMs: UbuntuWAF, SmartHotelWeb1, SmartHotelWeb2, and SmartHotelSQL1. A series of arrows show how these VMs will be migrated to Azure. The first 3 VMs have an arrow labeled 'Azure Site Recovery' pointing to 3 similarly-labeled VMs in Azure. The last VM, SmartHotelSQL1, has an arrow labeled 'Azure Database Migration Service' pointing to an Azure SQL Database. A third arrow labeled 'Azure Migrate' points from all 4 on-premises VMs to an Azure Migrate dashboard showing migration readiness.](Images/overview.png)
 
 To assess the Hyper-V environment, you will use Azure Migrate. This includes deploying the Azure Migrate appliance on the Hyper-V host to gather information about the environment. For deeper analysis, the Microsoft Monitoring Agent and Dependency Agent will be installed on the VMs, enabling the Azure Migrate dependency visualization.
 
@@ -166,7 +166,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
     Read through the instructions on how to download, deploy and configure the Azure Migrate appliance. Close the 'Discover machines' blade (do **not** download the .VHD file, it has already been downloaded for you).
     
-2.  In the global search box, enter **SmartHotelHost** into the search box, then click on the **SmartHotelHost** virtual machine.
+2.  In a separate tab, navigate to the Azure portal. In the global search box, enter **SmartHotelHost** into the search box, then click on the **SmartHotelHost** virtual machine.
     
     ![Screenshot of the Azure portal search box, searching for the SmartHotelHost virtual machine.](Images/Exercise1/find-smarthotelhost.png)
 
@@ -362,7 +362,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
     ![Screenshot of the Azure Migrate 'Dependencies' blade, with the 'Configure OMS Workspace' button highlighted.](Images/Exercise1/configure-oms-link.png)
 
-3.  Create a new OMS workspace. Use **AzureMigrateWorkspace<\unique number\>** as the workspace name, where \<unique number\> is a random number. Choose **East US** as the workspace location (Azure Migrate v2 private preview only supports the US geography). Click **Configure**.
+3.  Create a new OMS workspace. Use **AzureMigrateWorkspace\<unique number\>** as the workspace name, where \<unique number\> is a random number. Choose **East US** as the workspace location (Azure Migrate v2 private preview only supports the US geography). Click **Configure**.
 
     ![Screenshot of the Azure Migrate 'Configure OMS workspace' blade.](Images/Exercise1/configure-oms-link.png)
 
@@ -508,7 +508,7 @@ In this task you will create a new Azure SQL database to migrate the on-premises
     - Resource group (create new): **SmartHotelDBRG**
     - Database name: **smarthoteldb**
     - Server: Click **Create new** and fill in the New server blade as follows:
-        - Server name: **smarthoteldb\[add unique number\]**
+        - Server name: **smarthoteldb\[unique number\]**
         - Server admin login: **demouser**
         - Password: **demo@pass123**
         - Location: **IMPORTANT: Select the same region you used when you started your lab - this makes migration faster**.
@@ -846,7 +846,7 @@ In this task you will install the Azure Virtual Machine Agent (VM Agent) on your
 
 2.  Open **Hyper-V Manager**, either from the Start menu or by opening Server Manager and using the 'tools' menu.
 
-3.  In Hyper-V Manager, click on **SmartHotelWeb1**, then click **Connect**. This opens a new session with the SmartHotelWeb1 VM. Log in to the Administrator account using password **demo@pass123**.
+3.  In Hyper-V Manager, click on **SmartHotelWeb1**, then click **Connect**. This opens a new session with the SmartHotelWeb1 VM. Log in to the Administrator account using password **demo@pass123** (use the 'eyeball' to check the password was entered correctly with your local keyboard mapping).
 
 4.  Open a web browser and download the VM Agent from:
 
@@ -866,7 +866,7 @@ We will now install the Linux version of the Azure VM Agent on the Ubuntu VM. Al
 
 7.  In the Azure portal, navigate to the SmartHotelHost VM and note the public IP address. Open a new browser tab and navigate to **https://shell.azure.com**, accept and prompts and open a **Bash shell** session (not a PowerShell session).
 
-    ![Screenshot showing the Azure Cloud Shell, with a Bash session.](Images/Exercise1/cloud-shell.png)
+    ![Screenshot showing the Azure Cloud Shell, with a Bash session.](Images/Exercise3/cloud-shell.png)
 
 8.  Enter the following command, replacing \<ip address\> with the public IP address of the SmartHotelHost:
 
@@ -874,9 +874,11 @@ We will now install the Linux version of the Azure VM Agent on the Ubuntu VM. Al
     ssh demouser@<ip address>
     ```
 
+    > **Note:** This SSH connection is actually with the UbuntuWAF virtual machine hosted on the SmartHotelHost. The SmartHotelHost has been pre-configured with a network rule which forwards the SSH connection (TCP port 22) to the UbuntuWAF virtual machine.
+
 9. Enter 'yes' if prompted whether to connect. Use the password **demo@pass123**.
 
-    ![Screenshot showing the Azure Cloud Shell, with a SSH session to UbuntuWAF.](Images/Exercise1/ssh.png)
+    ![Screenshot showing the Azure Cloud Shell, with a SSH session to UbuntuWAF.](Images/Exercise3/ssh.png)
 
 10. In the terminal window, enter the following command:
 
@@ -979,7 +981,7 @@ In this task you will configure Azure Site Recovery by creating a Hyper-V Site t
 
 18. Complete the **Target** blade as follows, then click **OK**.
     - Post-failover resource group: **SmartHotelASRRG**
-    - Storage account: **vaultstorage\[unique\]**
+    - Storage account: **vaultstorage\[unique number\]**
     - Post-failover Azure network: **SmartHotelASRVNet**
     - Subnet: **SmartHotel (192.168.0.0/24)**
 
@@ -1096,7 +1098,7 @@ In this task you will perform a test failover of the SmartHotelWeb* virtual mach
 
     ![Screenshot showing protection status for replicated VMs in ASR.](Images/Exercise3/protected.png)
 
-    > **Note**: If the virtual machines are still synchronizing, wait for replication to finish before moving on to the next step.
+    > **Note**: If the virtual machines are still synchronizing, wait for replication to finish before moving on to the next step. Refresh your browser to see the current replication status.
 
 6. Click on **Recovery Plans (Site Recovery)** and select the **SmartHotelRecovery** plan. Click **Test failover**.
 
@@ -1162,9 +1164,9 @@ As a preliminary step, you will temporarily associate a public IP address with t
 
 6.  Return to the **SmartHotelWeb2-test** VM overview blade, and click **Connect**. Download the RDP file and connect to the machine with the username **Administrator** and the password **demo@pass123**.
 
-    ![Scnreeshot showing the 'Connect' button for VM 'smarthotelweb2-test'.](Images/Exercise3/web2-connect.png)
+    ![Screenshot showing the 'Connect' button for VM 'smarthotelweb2-test'.](Images/Exercise3/web2-connect.png)
 
-7.  Open Windows Explorer and navigate to the **C:\inetpub\SmartHotel.Registration.Wcf** folder. Double-click the **Web.config** file and open with Notepad.
+7.  Open Windows Explorer and navigate to the **C:\\inetpub\\SmartHotel.Registration.Wcf** folder. Double-click the **Web.config** file and open with Notepad.
 
 8.  Update the **DefaultConnection** setting to connect to your Azure SQL Database.
 
@@ -1172,12 +1174,11 @@ As a preliminary step, you will temporarily associate a public IP address with t
 
      ![Screenshot showing the 'Show database connection strings' link for an Azure SQL Database.](Images/Exercise3/show-connection-strings.png)
 
-    Copy the connection string, and paste into the web.config file on **smarthotelweb2-test**, replacing the existing connection string.
+    Copy the connection string, and paste into the web.config file on **smarthotelweb2-test**, replacing the existing connection string.  Be careful not to overwrite the 'providerName' parameter which is specified after the connection string.
     
     Make the following changes to the connection string:
     - Set the User ID to **demouser**.
     - Set the Password to **demo@pass123**.
-    - Append the following text to the end of the connection string (immediately before the closing quotes): **" providerName="System.Data.SqlClient**
 
     ![Screenshot showing the user ID and Password in the web.config database connection string.](Images/Exercise3/db-user-pass.png)
     ![Screenshot showing the providerName in the web.config database connection string.](Images/Exercise3/db-provider-name.png)

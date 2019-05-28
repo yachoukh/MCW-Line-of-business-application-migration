@@ -24,9 +24,9 @@ Format-Volume -DriveLetter F -FileSystem NTFS -NewFileSystemLabel DATA
 
 # Download disks for nested Hyper-V VMs, and various other files we'll need during the lab
 $downloads = @( `
-     "https://cloudworkshop.blob.core.windows.net/azure-migration/PostRebootConfigure.ps1" `
-    ,"https://cloudworkshop.blob.core.windows.net/azure-migration/OnLoginConfigure.ps1" `
-    ,"https://cloudworkshop.blob.core.windows.net/azure-migration/ConfigureAzureMigrateApplianceNetwork.ps1" `
+     "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/PostRebootConfigure.ps1" `
+    ,"https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/OnLoginConfigure.ps1" `
+    ,"https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/ConfigureAzureMigrateApplianceNetwork.ps1" `
     ,"https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi" `
     )
 
