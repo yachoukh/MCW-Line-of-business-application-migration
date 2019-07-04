@@ -63,7 +63,7 @@ Duration: 60 minutes
 
     You can deploy the template by clicking on the 'Deploy to Azure' button below.
 
-    [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fraw%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
+    [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
     >**Note**: The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
 
