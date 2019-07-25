@@ -169,7 +169,7 @@ cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v1.19.05.10.zip $tempDir\AzureMigrate.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v1.19.06.27.zip $tempDir\AzureMigrate.zip"
 
 # Unzip the VMs
 $zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
