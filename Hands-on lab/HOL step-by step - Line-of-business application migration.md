@@ -822,7 +822,7 @@ The schema migration will be carried out using an offline data migration activit
 
 #### Task summary <!-- omit in toc -->
 
-In this task you used a off-line data migration activity in the Azure Data Migration Service to migrate the database data from the on-premises SQL Server database to the Azure SQL database.
+In this task you used an off-line data migration activity in the Azure Data Migration Service to migrate the database data from the on-premises SQL Server database to the Azure SQL database.
 
 ### Exercise summary <!-- omit in toc -->
 
