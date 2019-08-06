@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-May 2019
+August 2019
 </div>
 
 
@@ -121,7 +121,7 @@ Refer to the [Before the HOL - Line-of-business application migration](./Before%
 
 Duration: 60 minutes
 
-In this exercise, you will use Azure Migrate to assess the on-premises environment.
+In this exercise, you will use Azure Migrate to assess the on-premises environment. This will include selecting Azure Migrate tools, deploying the Azure Migrate appliance into the on-premises environment, creating a migration assessment, and using the Azure Migrate dependency visualization.
 
 ### Task 1: Create the Azure Migrate project
 
@@ -155,6 +155,10 @@ In this task, you will create the Azure Migrate project and select the migration
 
     ![Screenshot of the Azure Migrate 'Servers' blade, showing the Azure Migrate: Server Assessment tool for the selected subscription and resource group.](Images/Exercise1/servers.png)
 
+#### Task summary <!-- omit in toc -->
+
+In this task you created an Azure Migrate project, selecting the built-in tools for assessment and migration.
+
 ### Task 2: Deploy the Azure Migrate appliance
 
 In this task, you will deploy and configure the Azure Migrate appliance in the on-premises Hyper-V environment. This appliance communicates with the Hyper-V server to gather configuration and performance data about your on-premises VMs.
@@ -179,17 +183,17 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
     ![Screenshot of Hyper-V Manager on the SmartHotelHost, showing 4 VMs: smarthotelSQL1, smarthotelweb1, smarthotelweb2 and UbuntuWAF.](Images/Exercise1/hyperv-vm-list.png)
 
-Before deploying the Azure Migrate appliance virtual machine, we need to create a network switch that it will use to communicate with the Hyper-V host. We could use the existing switch used by the SmartHotel VMs, but since the Azure Migrate appliance does not need to communicate with the SmartHotel VMs directly, we will protect our application environment by creating a separate switch.
+Before deploying the Azure Migrate appliance virtual machine, you need to create a network switch that it will use to communicate with the Hyper-V host. You could use the existing switch used by the SmartHotel VMs, but since the Azure Migrate appliance does not need to communicate with the SmartHotel VMs directly, you will protect the application environment by creating a separate switch.
 
-6.  In Hyper-V Manager, under 'Actions', click **Virtual Switch Manager** to open the Virtual Switch Manager. The 'New virtual network switch' option should already be selected. Under 'Create virtual switch', select **Internal** as the virtual switch type, then click **Create Virtual Switch**.
+1.  In Hyper-V Manager, under 'Actions', click **Virtual Switch Manager** to open the Virtual Switch Manager. The 'New virtual network switch' option should already be selected. Under 'Create virtual switch', select **Internal** as the virtual switch type, then click **Create Virtual Switch**.
 
     ![Screenshot of the Create Virtual Switch window from Hyper-V Manager. A new switch of type 'Internal' is selected.](Images/Exercise1/create-virtual-switch-1.png)
 
-7.  A new virtual switch is created. Change the name to **Azure Migrate Switch** (this is important, since a script we will run shortly depends on the name), then click **OK**.
+2.  A new virtual switch is created. Change the name to **Azure Migrate Switch** (this is important, since a script you will run shortly depends on the name). Then click **OK**.
 
     ![Screenshot of the Virtual Switch Manager window from Hyper-V Manager. The new switch has been renamed 'Azure Migrate Switch'.](Images/Exercise1/create-virtual-switch-2.png)
 
-We will now deploy the Azure Migrate appliance virtual machine.  Normally, you would first need to download the .ZIP file containing the appliance to your Hyper-V host, and unzip it. To save time, these steps have been completed for you.
+You will now deploy the Azure Migrate appliance virtual machine.  Normally, you would first need to download the .ZIP file containing the appliance to your Hyper-V host, and unzip it. To save time, these steps have been completed for you.
 
 8.  Back in Hyper-V Manager, under 'Actions', click **Import Virtual Machine...** to open the 'Import Virtual Machine' wizard.
    
@@ -211,7 +215,7 @@ We will now deploy the Azure Migrate appliance virtual machine.  Normally, you w
 
 14. Review the summary page, then click **Finish** to create the Azure Migrate appliance VM.
 
-Before starting the Azure Migrate appliance, we must configure the network settings. The existing Hyper-V environment has a NAT network using the IP address space 192.168.0.0/16. The internal NAT switch used by the SmartHotel application uses the subnet 192.168.0.0/24, and each VM in the application has been assigned a static IP address from this subnet.
+Before starting the Azure Migrate appliance, you must configure the network settings. The existing Hyper-V environment has a NAT network using the IP address space 192.168.0.0/16. The internal NAT switch used by the SmartHotel application uses the subnet 192.168.0.0/24, and each VM in the application has been assigned a static IP address from this subnet.
 
 You will create a new subnet 192.168.1.0/24 within the existing NAT network, with gateway address 192.168.1.1.  These steps will be completed using a PowerShell script. The Azure Migrate appliance will be assigned an IP address from this subnet using a DHCP service running on the SmartHotelHost.
 
@@ -226,6 +230,10 @@ You will create a new subnet 192.168.1.0/24 within the existing NAT network, wit
  17. In Hyper-V Manager, click on the **AzureMigrateAppliance** VM, then click **Start**.
 
    ![Screenshot of Hyper-V Manager showing the start button for the Azure Migrate appliance.](Images/Exercise1/start-migrate-appliance.png)
+
+#### Task summary <!-- omit in toc -->
+
+In this task you deployed the Azure Migrate appliance in the on-premises Hyper-V environment.
 
 ### Task 3: Configure the Azure Migrate appliance
 
@@ -277,7 +285,7 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the Hyper-V host credentials.](Images/Exercise1/appliance-config-5.png)
 
-The next step is to register our Hyper-V host with the Azure Migrate appliance.
+The next step is to register the Hyper-V host with the Azure Migrate appliance.
 
 11. Under 'Specify the list of Hyper-V hosts and clusters to discover', click **Add**.
 
@@ -306,6 +314,10 @@ The next step is to register our Hyper-V host with the Azure Migrate appliance.
     ![Screenshot of the Azure Migrate portal blade. Under 'Azure Migrate: Server Assessment' the value for 'discovered servers' is '5'.](Images/Exercise1/discovered-servers.png)
 
 >**Wait for the discovery process to complete before proceeding to the next Task**.
+
+#### Task summary <!-- omit in toc -->
+
+In this task you configured the Azure Migrate appliance in the on-premises Hyper-V environment and started the migration assessment discovery process.
 
 ### Task 4: Create a migration assessment
 
@@ -358,6 +370,10 @@ In this task, you will use Azure Migrate to create a migration assessment for th
     ![Screenshot of Azure documentation showing troubleshooting advice for the 'Unsupported boot type' issue. It suggests using Azure Migrate: Server Migration for Azure migration since this will convert the boot type to BIOS.](Images/Exercise1/unsupported-boot-type-portal.png)
 
 13. Take a few minutes to explore other aspects of the migration assessment. Check why the UbuntuWAF is marked as 'conditionally ready for Azure', and explore the costs associated with the migration.
+
+#### Task summary <!-- omit in toc -->
+
+In this task you created and configured an Azure Migrate migration assessment.
 
 ### Task 5: Configure dependency visualization
 
@@ -452,6 +468,10 @@ You will now deploy the Linux versions of the Microsoft Monitoring Agent and Dep
 
 21. The agent installation is now complete. Next, you need to generate some traffic on the SmartHotel application so the dependency visualization has some data to work with. Browse to the public IP address of the SmartHotelHost, and spend a few minutes refreshing the page and checking guests in and out.
 
+#### Task summary <!-- omit in toc -->
+
+In this task you configured the Azure Migrate dependency visualization feature, by creating a Log Analytics workspace and deploying the Azure Monitoring Agent and Dependency Agent on both Windows and Linux on-premises machines.
+
 ### Task 6: Explore dependency visualization
 
 In this task, you will explore the dependency visualization feature of Azure Migrate. This feature uses data gathered by the dependency agent you installed in Task 5.
@@ -473,6 +493,14 @@ In this task, you will explore the dependency visualization feature of Azure Mig
     ![Screenshot showing how to add a VM to a VM group using the dependency visualization feature in Azure Migrate.](Images/Exercise1/dependency-group.png)
 
     **Important:** When you have finished exploring the dependency visualization, make sure your group still contains the original virtual machines (**UbuntuWAF**, **smarthotelweb1**, and **smarthotelweb2**).
+
+#### Task summary <!-- omit in toc -->
+
+In this task you explored the Azure Migrate dependency visualization feature.
+
+### Exercise summary <!-- omit in toc -->
+
+In this exercise, you used Azure Migrate to assess the on-premises environment. This included selecting Azure Migrate tools, deploying the Azure Migrate appliance into the on-premises environment, creating a migration assessment, and using the Azure Migrate dependency visualization.
 
 ## Exercise 2: Migrate the Application Database
 
@@ -498,7 +526,7 @@ Prior to using the Azure Database Migration Service, the resource provider **Mic
 
     ![Screenshot showing the Microsoft.DataMigration resource provider and 'Register' button.](Images/Exercise2/register-rp.png)
 
-    > **Note**: It may take several minutes for the resource provider to register. You can proceed to the next task without waiting for the registration to complete. Keep this browser tab open so you can check the registration status. We will not use the resource provider until task 3.
+    > **Note**: It may take several minutes for the resource provider to register. You can proceed to the next task without waiting for the registration to complete. Keep this browser tab open so you can check the registration status. You will not use the resource provider until task 3.
 
 #### Task summary <!-- omit in toc -->
 
@@ -575,7 +603,7 @@ In this task you will create an Azure Database Migration Service resource. This 
 
     ![Screenshot showing the DMS 'Create' blade.](Images/Exercise2/create-dms.png)
 
-> **Note:** Creating a new migration service can take around 20 minutes. You can continue to the next task without waiting for the operation to complete. We will not use the Database Migration Service until task 5.
+> **Note:** Creating a new migration service can take around 20 minutes. You can continue to the next task without waiting for the operation to complete. You will not use the Database Migration Service until task 5.
 
 #### Task summary <!-- omit in toc -->
 
@@ -638,7 +666,7 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
     
     ![Screenshot of the DMA showing assessment in progress.](Images/Exercise2/assessment-in-progress.png)
 
-15. **Wait** for the assessment to complete, and review the results. The results should show one unsupported feature, 'Service Broker feature is not supported in Azure SQL Database'. For this migration, we can ignore this issue.
+15. **Wait** for the assessment to complete, and review the results. The results should show one unsupported feature, 'Service Broker feature is not supported in Azure SQL Database'. For this migration, you can ignore this issue.
 
     > **Note:** For Azure SQL Database, the assessments identify feature parity issues and migration blocking issues.
     >- The SQL Server feature parity category provides a comprehensive set of recommendations, alternative approaches available in Azure, and mitigating steps to help you plan the effort into your migration projects.
@@ -668,7 +696,7 @@ In this task you used Data Migration Assistant to assess an on-premises database
 
 In this task you will create a Migration Project within the Azure Database Migration Service. This project contains the connection details for both the source and target databases.
 
-In subsequent tasks, we will use this project to migrate both the database schema and the data itself from the on-premises SQL Server database to the Azure SQL Database.
+In subsequent tasks, you will use this project to migrate both the database schema and the data itself from the on-premises SQL Server database to the Azure SQL Database.
 
 1.  Check that the Database Migration Service resource you created in task 3 has completed provisioning. You can check the deployment status from the **Deployments** pane in the **AzureMigrateRG** resource group blade.
 
@@ -1008,7 +1036,7 @@ In this task you will modify the settings for each replicated VM to use a static
 
 In this task you modified the settings for each replicated VM to use a static private IP address that matches the on-premises IP addresses for that machine
 
-> **Note:** Azure Migrate makes a "best guess" at the VM settings, but you have full control over the settings of migrated items. In this case, setting a static private IP address ensures our virtual machines in Azure retain the same IPs they had on-premises, which avoids having to reconfigure the VMs during migration (for example, by editing web.config files).
+> **Note:** Azure Migrate makes a "best guess" at the VM settings, but you have full control over the settings of migrated items. In this case, setting a static private IP address ensures the virtual machines in Azure retain the same IPs they had on-premises, which avoids having to reconfigure the VMs during migration (for example, by editing web.config files).
 
 
 
@@ -1017,7 +1045,7 @@ In this task you modified the settings for each replicated VM to use a static pr
 
 In this task you will perform a migration of the UbuntuWAF, smarthotelweb1, and smarthotelweb2 machines to Azure.
 
-> **Note:** In a real-world scenario, you would perform a test migration before the final migration. To save time, we will skip the test migration in this lab. The test migration process is very similar to the final migration.
+> **Note:** In a real-world scenario, you would perform a test migration before the final migration. To save time, you will skip the test migration in this lab. The test migration process is very similar to the final migration.
 
 1.  Return to the 'Azure Migrate: Server Migration' overview blade. Under 'Step 3: Migrate', click the **Migrate** button.
 
@@ -1174,7 +1202,7 @@ In this task you will install the Azure Virtual Machine Agent (VM Agent) on your
 
 4.  Close the smarthotelweb1 window. Repeat the Azure VM agent installation process on **smarthotelweb2**.
 
-We will now install the Linux version of the Azure VM Agent on the Ubuntu VM. All Linux distributions supports by Azure have integrated the Azure VM Agent into their software repositories, making installation easy in most cases.
+You will now install the Linux version of the Azure VM Agent on the Ubuntu VM. All Linux distributions supports by Azure have integrated the Azure VM Agent into their software repositories, making installation easy in most cases.
 
 5.  In the Azure portal, locate the **UbuntuWAF** VM and note the public IP address. Open a new browser tab and navigate to **https://shell.azure.com**, accept and prompts and open a **Bash shell** session (not a PowerShell session).
 
@@ -1201,7 +1229,7 @@ We will now install the Linux version of the Azure VM Agent on the Ubuntu VM. Al
 
 9.  Wait for the installer to finish, then close the terminal window and the Ubuntu VM window.
 
-10. As a final step, we will now clean up the resources that were created to support the migration and are no longer needed. These include the Azure Migrate project, the Recovery Service Vault (Azure Site Recovery resource) used by the Azure Migrate Server Migration engine, and the Database Migration Service instance. Also included are various secondary resources such as the Log Analytics workspace used by the Dependency Visualization, the storage account used by Azure Site Recovery, and a Key Vault instance.
+10. As a final step, you will now clean up the resources that were created to support the migration and are no longer needed. These include the Azure Migrate project, the Recovery Service Vault (Azure Site Recovery resource) used by the Azure Migrate Server Migration engine, and the Database Migration Service instance. Also included are various secondary resources such as the Log Analytics workspace used by the Dependency Visualization, the storage account used by Azure Site Recovery, and a Key Vault instance.
     
     Because all of these temporary resources have been deployed to a separate **AzureMigrateRG** resource group, deleting them is as simple as deleting the resource group. Simply navigate to the resource group blade in the Azure portal, click **Delete resource group** and complete the confirmation prompts.
 

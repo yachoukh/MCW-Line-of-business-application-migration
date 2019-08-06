@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+August 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -26,11 +26,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Line-of-business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Deploy the on-premises environment](#task-1-deploy-the-on-premises-environment)
-    - [Task 2: Verify the on-premises environment](#task-2-verify-the-on-premises-environment)
+- [Line-of-business application migration before the hands-on lab setup guide](#Line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#Requirements)
+  - [Before the hands-on lab](#Before-the-hands-on-lab)
+    - [Task 1: Deploy the on-premises environment](#Task-1-Deploy-the-on-premises-environment)
+    - [Task 2: Verify the on-premises environment](#Task-2-Verify-the-on-premises-environment)
 
 <!-- /TOC -->
 
@@ -51,8 +51,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - Standard FSv2 Family vCPUs: **at least 6 vCPUs**.
         - Total Regional vCPUs: **at least 14 vCPUs**.
   
-3.  Your subscription must be registered for the Azure Migrate v2 Preview.  [Click here to apply.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3jsP9XEFE1ClBlDcwuVgRZUODNERjNTVjJSUVRBVllMNzhRVDFESVozRS4u)
-
 ## Before the hands-on lab
 
 Duration: 60 minutes
@@ -65,7 +63,7 @@ Duration: 60 minutes
 
     [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
-    >**Note**: The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
+    >**Note:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
 
 ### Task 2: Verify the on-premises environment
 
