@@ -67,7 +67,7 @@ Duration: 60 minutes
 
     [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
-    > **Note:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
+    > **Note:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour 15 minutes from the start of template deployment for the scripts to run.**
 
 ### Task 2: Verify the on-premises environment
 
@@ -79,6 +79,6 @@ Duration: 60 minutes
 
     ![Browser screenshot showing the SmartHotel application](Images/BeforeTheHOL/smarthotel.png)
 
-    > **Note:** If the SmartHotel application is not shown, wait 10 minutes and try again. It takes **at least 1 hour** from the start of template deployment. You can also check the CPU, network and disk activity levels for the SmartHotelHost VM in the Azure portal, to see if the provisioning is still active.
+    > **Note:** If the SmartHotel application is not shown, wait 10 minutes and try again. It takes **at least 1 hour 15 minutes** from the start of template deployment. You can also check the CPU, network and disk activity levels for the SmartHotelHost VM in the Azure portal, to see if the provisioning is still active.
 
 You should follow all steps provided *before* performing the Hands-on lab.
