@@ -22,7 +22,7 @@
         "smarthotelhostVMname": "SmartHotelHost",
         "smarthotelhostNICname": "smarthotelhostnic",
         "smarthotelhostOSdisk": "[concat(variables('smarthotelhostVMname'),'_OsDisk')]",
-        "smarthotelhostDATAdisk": "[concat(variables('smarthotelhostVMname'),'_DataDisk')]",
+        "smarthotelhostDataDisk": "[concat(variables('smarthotelhostVMname'),'_DataDisk')]",
         "publicIPAddressName": "smarthotelhostip",
         "smarthotelVnetName": "smarthotelhostvnet",
         "smarthotelPrefix": "10.0.0.0/16",
@@ -68,11 +68,11 @@
                     "dataDisks": [
                         {
                             "lun": 0,
-                            "name": "[variables('smarthotelhostDATAdisk')]",
+                            "name": "[variables('smarthotelhostDataDisk')]",
                             "createOption": "Attach",
                             "caching": "None",
                             "managedDisk": {
-                                "id": "[resourceId('Microsoft.Compute/disks/', variables('smarthotelhostDATAdisk'))]"
+                                "id": "[resourceId('Microsoft.Compute/disks/', variables('smarthotelhostDataDisk'))]"
                             }
                         }
                     ]
@@ -96,8 +96,8 @@
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/networkInterfaces', variables('smarthotelhostNICname'))]",
-                "[resourceId('Microsoft.Compute/disks/', variables('smarthotelhostDATAdisk'))]"
+                "[variables('smarthotelhostNICname')]",
+                "[variables('smarthotelhostDataDisk')]"
             ],
             "resources": [
                 {
@@ -128,7 +128,7 @@
         },
         {
             "type": "Microsoft.Compute/disks",
-            "name": "[variables('smarthotelhostDATAdisk')]",
+            "name": "[variables('smarthotelhostDataDisk')]",
             "apiVersion": "2017-03-30",
             "location": "[resourceGroup().location]",
             "sku": {
@@ -138,7 +138,7 @@
                 "creationData": {
                     "createOption": "Empty"
                 },
-                "diskSizeGB": 1023
+                "diskSizeGB": 256
             }
         },
         {
@@ -164,6 +164,7 @@
                         }
                     }
                 ],
+                "enableAcceleratedNetworking": true,
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('smarthotelhostNSGName'))]"
                 },
@@ -173,8 +174,10 @@
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('smarthotelVnetName'))]"
+                "[variables('publicIPAddressName')]",
+                "[variables('smarthotelhostNSGName')]",
+                "[variables('smarthotelVnetName')]"
+
             ]
         },
         {
