@@ -47,7 +47,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 In this whiteboard design session, you will look at how to design an Azure migration for a heterogenous customer environment. The existing infrastructure comprises both Windows and Linux servers running on both VMWare and physical machines, and includes some legacy servers. Throughout the whiteboard design session, you will look at the various options and services available to migrate heterogenous environments to Azure.
 
-At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate andAzure Database Migration Service.
+At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate and Azure Database Migration Service.
 
 
 ## Step 1: Review the customer case study 
@@ -82,17 +82,17 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Customer needs 
 
-1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required
+1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required.
    
-2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies
+2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies.
 
-3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible
+3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible.
    
-4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons
+4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons.
    
-5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
+5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
    
-6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
+6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
    
 
 ### Customer objections 
@@ -109,7 +109,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate and Azure Database Migration Service](images/common_scenarios.png)
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png)
 
 ## Step 2: Design a proof of concept solution
 
