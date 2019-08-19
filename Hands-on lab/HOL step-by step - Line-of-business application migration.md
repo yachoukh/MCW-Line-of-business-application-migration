@@ -1232,6 +1232,9 @@ You will now install the Linux version of the Azure VM Agent on the Ubuntu VM. A
 
 In this task you installed the Azure Virtual Machine Agent (VM Agent) on your migrated VMs. You also cleaned up the temporary resources created during the migration process.
 
+### Exercise summary <!-- omit in toc -->
+
+In this exercise you migrated the web tier and application tiers of the application from on-premises to Azure using Azure Migrate: Server Migration. Having migrated the virtual machines, you reconfigured the application tier to use the migrated application database hosted in Azure SQL Database, and verified that the migrated application is working end-to-end. You also installed the VM Agent on the migrated virtual machines, and cleaned up migration resources.
 
 ## After the hands-on lab 
 
