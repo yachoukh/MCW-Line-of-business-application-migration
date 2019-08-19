@@ -53,7 +53,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   
     > **Note:** If you are using an Azure Pass subscription, you may not meet the vCPU quotas above. In this case, you can still complete the lab, by taking the following steps:
     > -  Deploy the 'on-premises' environment (see below) in a different Azure region to the Azure VMs created during migration. With this change, you will only need 8 Total Regional vCPUs. Migration will take a little longer, since data must be transferred between regions.
-    > -  Use a different VM tier instead of FSv2 for the migrated VMs (for example, DSv2). However, you cannot change the tier of the DSv3 VMs, since this tier is required for the nested virtualization support used to implement the 'on-premises' environment.
+    > -  Use a different VM tier instead of FSv2 for the migrated VMs (for example, DSv2 or DSv3). However, you cannot change the tier of the DSv3 VM, since this tier is required for the nested virtualization support used to implement the 'on-premises' environment.
 
 ## Before the hands-on lab
 

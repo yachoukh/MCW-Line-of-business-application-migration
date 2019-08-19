@@ -977,7 +977,7 @@ In this task, you will configure and enable the replication of your on-premises 
     | smarthotelweb1 | Standard_F2s_v2 | Windows |
     | smarthotelweb2 | Standard_F2s_v2 | Windows |
 
-    > **Note:** If you are using an Azure Pass subscription, you subscription may not have a quota allocated for FSv2 virtual machines. In this case, use **DSv2** virtual machines instead. (Do not use DSv3, since this is used by the SmartHotelHost and using the same VM family for the migrated VMs may exceed your quota.)
+    > **Note:** If you are using an Azure Pass subscription, you subscription may not have a quota allocated for FSv2 virtual machines. In this case, use **DS2_v2 or D2s_v3** virtual machines instead.
 
     ![Screenshot of the 'Compute' tab of the 'Replicate' wizard in Azure Migrate Server Migration. Each VM is configured to use a Standard_F2s_v2 SKU, and has the OS Type specified.](Images/Exercise3/replicate-6.png)
 
@@ -1013,7 +1013,7 @@ In this task you will modify the settings for each replicated VM to use a static
 
    ![Screenshot of the smarthotelweb1 blade with the 'Compute and Network' and 'Edit' links highlighted.](Images/Exercise3/config-1.png)
 
-3.  Confirm that the VM is configured to use the **F2s_v2 (2 cores, 4GB memory, 1 NICs)** VM size (or **D2s_v2** if using an Azure Pass subscription) and 'Use managed disks' is set to **Yes**.
+3.  Confirm that the VM is configured to use the **F2s_v2 (2 cores, 4GB memory, 1 NICs)** VM size (or **DS2_v2 or D2s_v3** if using an Azure Pass subscription) and 'Use managed disks' is set to **Yes**.
 
 4.  Under **Network Interfaces**, click on **InternalNATSwitch** to open the network interface settings.
 
