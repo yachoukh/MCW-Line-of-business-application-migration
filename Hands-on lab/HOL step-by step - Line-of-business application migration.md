@@ -474,7 +474,7 @@ In this task, you will explore the dependency visualization feature of Azure Mig
 
 1.  Return to the Azure Portal and refresh the Azure Migrate **SmartHotel VMs** VM group blade. The 3 VMs on which the dependency agent was installed should now show their status as 'Installed'. (If not, refresh the page **using the browser refresh button**, not the refresh button in the blade.)
 
-    ![Screenshot showing the the dependency agent installed on each VM in the Azure Migrate VM group.](Images/Exercise1/dependency-viz-installed.png)
+    ![Screenshot showing the dependency agent installed on each VM in the Azure Migrate VM group.](Images/Exercise1/dependency-viz-installed.png)
 
 2.  Click on **View dependencies**.
 
@@ -627,7 +627,7 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
 5.  Once the tools are installed in Azure Migrate, the portal should show the 'Azure Migrate - Databases' blade. Under 'Azure Migrate: Database Assessment' click **+ Assess**.
 
-    ![Screenshot highlighing the '+Assess' link on the 'Azure Migrate - Databases' blade in the Azure portal.](Images/Exercise2/db-assess.png)
+    ![Screenshot highlighting the '+Assess' link on the 'Azure Migrate - Databases' blade in the Azure portal.](Images/Exercise2/db-assess.png)
 
 6.  Click the **Download** button to open the Data Migration Assistant download page. Copy the page URL to the clipboard.
 
