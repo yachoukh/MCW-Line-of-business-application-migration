@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Line-of-business application migration
@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+August 2019
 </div>
 
 
@@ -27,31 +27,31 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Line-of-business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
-- [Line-of-business application migration whiteboard design session trainer guide](#line-of-business-application-migration-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Preferred solution](#preferred-solution)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+- [Trainer information](#Trainer-information)
+  - [Role of the trainer](#Role-of-the-trainer)
+  - [Whiteboard design session flow](#Whiteboard-design-session-flow)
+  - [Before the whiteboard design session: How to prepare](#Before-the-whiteboard-design-session-How-to-prepare)
+  - [During the whiteboard design session: Tips for an effective whiteboard design session](#During-the-whiteboard-design-session-Tips-for-an-effective-whiteboard-design-session)
+- [Line-of-business application migration whiteboard design session student guide](#Line-of-business-application-migration-whiteboard-design-session-student-guide)
+  - [Abstract and learning objectives](#Abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study)
+    - [Customer situation](#Customer-situation)
+    - [Customer needs](#Customer-needs)
+    - [Customer objections](#Customer-objections)
+    - [Infographic for common scenarios](#Infographic-for-common-scenarios)
+  - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#Step-3-Present-the-solution)
+  - [Wrap-up](#Wrap-up)
+  - [Additional references](#Additional-references)
+- [Line of business application migration whiteboard design session trainer guide](#Line-of-business-application-migration-whiteboard-design-session-trainer-guide)
+  - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study-1)
+  - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution-1)
+  - [Step 3: Present the solution](#Step-3-Present-the-solution-1)
+  - [Wrap-up](#Wrap-up-1)
+  - [Preferred target audience](#Preferred-target-audience)
+  - [Preferred solution](#Preferred-solution)
+  - [Checklist of preferred objection handling](#Checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#Customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 <!-- /TOC -->
 
@@ -173,7 +173,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 In this whiteboard design session, you will look at how to design an Azure migration for a heterogenous customer environment. The existing infrastructure comprises both Windows and Linux servers running on both VMWare and physical machines, and includes some legacy servers. Throughout the whiteboard design session, you will look at the various options and services available to migrate heterogenous environments to Azure.
 
-At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate, Azure Database Migration Service, and Azure Site Recovery.
+At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate and Azure Database Migration Service.
 
 ## Step 1: Review the customer case study 
 
@@ -207,17 +207,17 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Customer needs 
 
-1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required
+1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required.
    
-2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies
+2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies.
 
-3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible
+3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible.
    
-4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons
+4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons.
    
-5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
+5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
    
-6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
+6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
    
 ### Customer objections 
 
@@ -233,7 +233,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate, Azure Site Recovery, and Azure Database Migration Service](images/common_scenarios.png)
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png)
 
 ## Step 2: Design a proof of concept solution
 
@@ -332,7 +332,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | **Description** | **Links** |
 | Azure migration hub  | https://azure.microsoft.com/migration/  |
 | Azure Migrate  | https://azure.microsoft.com/services/azure-migrate/  |
-| Azure Site Recovery  | https://azure.microsoft.com/services/site-recovery/ |
 | Azure Database Migration Guide  | https://aka.ms/datamigration  |
 | Microsoft Data Migration Assistant (DMA) | https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017 |
 | Azure Data Migration Service | https://azure.microsoft.com/services/database-migration/ |
@@ -402,23 +401,23 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 1.  How can Fabrikam assess their existing infrastructure for migration to Azure? Provide options for VMware VMs, physical servers, and databases.
 
-    For VMware VMs, Fabrikam should use Azure Migrate to assess their readiness for migration to Azure. Azure Migrate supports migration assessment for VMware workloads managed by vCenter version 5.5, 6.0, 6.5 or 7.0. Hyper-V support is in Preview, with production workload support.
+    For VMware VMs, Fabrikam should use Azure Migrate to assess their readiness for migration to Azure. Azure Migrate supports migration assessment for VMware workloads managed by vCenter version 5.5, 6.0, 6.5 or 7.0. It also supports assessment of Hyper-V environments. Azure Migrate can be extended using third-party tools to provide additional assessment and migration capabilities, including assessment of physical servers.
 
     Azure Migrate is a fully-managed Azure service. Migration assessment occurs in two major phases: discovery and assessment. In the discovery phase, a collector appliance VM is deployed into the on-premises environment to gather raw data on the VMs to be migrated. This data includes static VM information (such as CPU, memory, disk configuration, OS and identification of key workloads such as databases) together with utilization metrics. These metrics are gathered over time, so it is important to gather data over a representative time period, especially for workloads with irregular usage patterns (for example, to generate daily, weekly or monthly reports).
     
-    ![Azure portal screenshot showing the Azure Migrate assessment report dashboard](images/migration_assessment.png)
+    ![Azure portal screenshot showing the Azure Migrate assessment report dashboard.](images/migration_assessment.png)
 
-    The collector appliance uploads the data it gathers to an Azure Migrate project in Azure.  This upload is secured using a project ID and project key, downloaded from the Azure portal. Each project supports up to 1,500 VMs.
+    The collector appliance uploads the data it gathers to an Azure Migrate project in Azure.  Each appliance supports discovery of up to 5,000 VMs.
 
-    ![Azure portal screenshot showing the 'discover machines' blade of the Azure Migrate service](images/discover_machines.png)
+    ![Azure portal screenshot showing the 'discover machines' blade of the Azure Migrate service.](images/discover_machines.png)
 
-    In the second phase, assessment, the data from the discovery phase is used to produce a migration assessment report, based on a number of migration parameters. You can create multiple reports from the same source data, using different migration parameters. These parameters include:
+    In the second phase, assessment, the data from the discovery phase is used to produce a migration assessment report. Each assessment supports up to 10,000 VMs, which may be drawn from multiple collectors. You can create multiple reports from the same source data, and tailor the report using a range of migration parameters. These parameters include:
 
     - Azure region and monthly uptime.
     - Whether to size VMs based on the existing VMware configuration, or on the measured utilization. In the latter case, a 'comfort factor' allows you to control how much headroom is included in the sizing recommendation.
     - VM pricing tier, disk storage tier, Azure subscription offer, and discounts such as re-using existing Windows OS licenses with Azure Hybrid Benefit and reducing base compute costs with reserved instances.
 
-    ![Azure portal screenshot of the Azure Migrate assessment configuration options](images/migration_assessment_configuration.png)
+    ![Azure portal screenshot of the Azure Migrate assessment configuration options.](images/migration_assessment_configuration.png)
 
     Having configured the assessment, an assessment report is produced. This provides information on migration readiness, together with an estimate of both compute and storage costs.
 
@@ -426,7 +425,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     The compute and storage cost estimates are based on the migration parameters specified in the assessment configuration. Costs are based on the rate card for your subscription, taking into account any offers and subscription discounts.
 
-    Azure Migrate does not support migration assessment of physical servers. For this scenario, third-party tools will need to be used. The [Azure migration hub](https://azure.microsoft.com/migration/) lists several examples to consider: Corent, Movere, Turbonomic and Cloudamize.
+    Azure Migrate does not support migration assessment of physical servers using the built-in assessment tool. However, it can be extended using a range of third-party tools, which do support physical server assessment. The [Azure migration hub](https://azure.microsoft.com/migration/) lists several examples to consider: Corent, Movere, Turbonomic and Cloudamize.
 
     For database migration, a range of assessment tools may be required depending on the database type.
 
@@ -440,13 +439,13 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     Azure Migrate dependency visualization provides in-depth analysis of processes and network dependencies for each assessed VM. It is extremely useful for identifying non-obvious network dependencies, such as Kerberos, DNS, certificate revocation checks, and so on.
 
-    ![Azure portal screenshot showing the Azure Migrate dependency visualization](images/dependency_visualization.png)
+    ![Azure portal screenshot showing the Azure Migrate dependency visualization.](images/dependency_visualization.png)
 
     Dependency visualization in Azure Migrate is based on the Service Map solution from Log Analytics, and can be used free of charge with Azure Migrate for up to 180 days (a dedicated Log Analytics workspace is required to avail of this discount). As part of Azure Migrate, dependency visualization is only available for VMware (and in Preview, Hyper-V) VMs. For physical machines, you can either use the Service Map solution from Log Analytics directly, or use the dependency analysis features of whichever third-party tool you have chosen for migration assessment.
 
     Deploying dependency visualization requires installing the Microsoft Monitoring Agent and Dependency Agent on each server being assessed. These are available for both Windows and Linux. Third-party tools will have different requirements, and may even support agentless dependency analysis.
 
-    ![Azure portal screenshot showing links and instructions to install the Microsoft Monitoring Agent and Dependency Agent](images/agent_install.png)
+    ![Azure portal screenshot showing links and instructions to install the Microsoft Monitoring Agent and Dependency Agent.](images/agent_install.png)
 
 3.  What criteria should Fabrikam use to prioritize their migrations when building a migration road map?
 
@@ -460,7 +459,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     The business context of each migration also plays a factor in roadmap prioritization. For example, if the hardware used by an existing workload is close to end-of-life, an early migration may save on renewal costs. Likewise, a recent investment in an on-premises application may justify deferring the migration. Similarly, if the migration is intended to bring significant business benefits (for example, to provide a higher-availability deployment for a critical application), this can be grounds for prioritization.
 
-    ![Diagram showing Microsoft IT's cloud journey, and what proportion of applications was rehosted, refactored, retired, etc](images/microsoft_it_journey_to_cloud.png)
+    ![Diagram showing Microsoft IT's cloud journey, and what proportion of applications was rehosted, refactored, retired, etc.](images/microsoft_it_journey_to_cloud.png)
 
 4.  What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
 
@@ -502,21 +501,23 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
     
     When porting disks, a number of OS configuration changes must be made to ensure the server is able to run in Azure. These include changes to network, power, time, remote access, and more. A full list of changes for both Windows and a range of Linux distributions is provided in the Azure documentation.
 
-    The third approach is to use a dedicated migration tool. Azure Migrate will suggest an appropriate migration tool as part of its migration assessment report. For VMware VMs, excluding databases, the recommended migration tool is currently Azure Site Recovery. (Support for VMware migration within Azure Migrate itself is currently in Preview, with production support.)
+    The third approach is to use a dedicated migration tool. Azure Migrate will suggest an appropriate migration tool as part of its migration assessment report. For VMware VMs, excluding databases, Azure Migrate supports both agent-less and agent-based migration.
 
-    Azure Site Recovery (ASR) provides a proven technology for migrating VMware VMs to Azure. It offers zero data loss with near-zero application downtime. This is achieved by replicating the source VMs while they are still running, only requiring a short downtime to perform an incremental replication of any very recent changes.
+    The agent-less migration requires the Azure Migrate appliance to be deployed as an additional VM into the on-premises environment. This VM integrates with vCenter to replicate VMs to Azure, without requiring any agents to be installed on the VMs themselves.
 
-    To deploy ASR, two servers, the Configuration Server and Process Server are deployed into the on-premises environment. The Process Server handles data replication, while the Configuration Server is responsible for orchestrating the replication process. Both servers are typically deployed to a single VMware VM, although for larger environments separate VMs (or even multiple Process Servers) may be used.
+    The agent-based migration is based on using Azure Site Recovery as the migration engine. This approach is also used for Hyper-V and physical server migrations. In this case the Azure Migrate replication appliance is deployed on-premises, comprising two processes known as the Configuration Server and Process Server. The Process Server handles data replication, while the Configuration Server is responsible for orchestrating the replication process. Both servers are typically deployed to a single VMware VM, although for larger environments separate VMs (or even multiple Process Servers) may be used. In addition, the Mobility Service (an agent) must be installed on the VMs being migrated.
     
-    In addition, the ASR Mobility Service (an agent) must be installed on the VMs being migrated. If this is not desirable, consider using the VMware migration support in Azure Migrate, which provides agent-less migration. While this service is currently in Preview, it is offered with support for Production workload migrations.
+    Choosing between agent-less and agent-based migration will require you to study the [Azure Migrate support matrix for VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) and [compare migration methods](https://docs.microsoft.com/azure/migrate/server-migrate-overview#compare-migration-methods). For example, note that servers using UEFI boot are only supported by agent-based migration.
+
+    Both approaches offer zero data loss with near-zero application downtime. This is achieved by replicating the source VMs while they are still running, only requiring a short downtime to perform an incremental replication of any very recent changes.
 
     Replicating VMs to Azure can require significant bandwidth, both for the initial replication and for ongoing incremental data synchronization. Data can be transferred either via the public Internet (encrypted using HTTPS), or for greater security and increased capacity via an ExpressRoute connection. The [ASR Deployment Planner](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner) tool can be used to forecast the bandwidth required, which can help with the decision whether ExpressRoute is required.
 
-    Once replication is complete, ASR will take care of creating the Azure VMs in the pre-prepared Azure environment. This process can be staged by grouping and sequencing VMs, and customized using pre- and post-deployment scripts. ASR also supports non-disruptive test failovers, which can be used to validate the migration steps.
+    Once replication is complete, Azure Migrate will take care of creating the Azure VMs in the pre-prepared Azure environment. This process can be staged by grouping and sequencing VMs, and customized using pre- and post-deployment scripts. Azure Migrate also supports non-disruptive test failovers, which can be used to validate the migration steps.
 
-    Unlike Azure Migrate, ASR also supports migration of physical servers, using a similar approach and architecture as for VMware VMs. Alternatively, a number of third-party migration tools is listed on the [Azure Migration hub](https://azure.microsoft.com/migration/).
+    While Azure Migrate does not support assessment for physical servers, it does support migration, using the Azure Site Recovery migration engine. The approach and architecture are similar to that used for VMware VMs. Alternatively, a number of third-party migration tools is listed on the [Azure Migration hub](https://azure.microsoft.com/migration/) and integrated into Azure Migrate.
 
-    For database migration, dedicated migration tools should be preferred.
+    For database migration, dedicated database migration tools should be preferred.
     
     For Microsoft SQL Server databases, the Azure Database Migration Service is recommended. This is a fully-managed service designed to streamline the process of migrating databases to Azure. It can scale to support multiple database migrations and migrate large databases. Two migration modes are supported: offline and online. Offline migration provides the simplest migration experience, but requires the application to be taken offline for the entire data replication process. Online migration synchronizes databases without downtime, giving a continual status of the number of pending changes. Once all changes are replicated, only a short downtime is required to cut over between databases.
 
@@ -527,7 +528,7 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
 
     An application should not be considered production-ready immediately upon completion of the migration process. A number of additional steps should be taken to harden the application for security, manageability and availability. These include:
-    - Uninstall the Mobility Service Agent (installed  during the ASR migration process)
+    - Uninstall the Mobility Service Agent (installed during the migration process in the case of agent-based migration)
     - Install the [Azure VM agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). This provides a number of critical manageability features for Azure VMs, including support for VM extensions and password reset.
     - Configure Azure Backup
     - Configure Azure Site Recovery (as a disaster recovery solution, not for migration)
@@ -586,7 +587,7 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     Migration projects should include creation of a proof of concept deployment, to validate the overall architecture and any assumptions, for example regarding the impact of changes to network latency between application components. This helps build confidence in Azure as a platform for hosting the application.
 
-    For the migration process itself, Azure Site Recovery supports a 'test failover'. This creates the Azure deployment in parallel with the existing deployment, allowing the migration process to be verified without risk of production impact. Likewise, database migration using DMS does not impact the existing production database.
+    For the migration process itself, Azure Migrate supports a 'test failover'. This creates the Azure deployment in parallel with the existing deployment, allowing the migration process to be verified without risk of production impact. Likewise, database migration using DMS does not impact the existing production database.
 
     Third-party migration tools used for migration of physical servers similarly support a validation step prior to committing the migration.
     
@@ -596,7 +597,7 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
 3.  Many applications comprise multiple components or tiers. How can you ensure that these migrations are appropriately orchestrated?
    
-    Using Azure Site Recovery, VMs can be grouped to reflect the application architecture. The dependency visualization feature of Azure Migrate helps identify and configure these groupings.
+    Using Azure Migrate, VMs can be grouped to reflect the application architecture. The dependency visualization feature of Azure Migrate helps identify and configure these groupings.
 
     The migration process can then be staged to migrate different groups of VMs separately. Custom scripts can be used to perform custom pre- and post-migration operations.
 
@@ -606,7 +607,7 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
  
     Migration will always be designed to create the new application deployment in parallel with the existing deployment. This applies to all application tiers, including the database.
 
-    To ensure data consistency during migration, a short application downtime may be required. For application servers migrated using ASR, incremental replication keeps the duration of this downtime to a minimum, since the initial data transfer can happen while the application is on-line so only deltas need be synchronized during the migration window.
+    To ensure data consistency during migration, a short application downtime may be required. For application servers migrated using Azure Migrate, incremental replication keeps the duration of this downtime to a minimum, since the initial data transfer can happen while the application is on-line so only deltas need be synchronized during the migration window.
     
     Similarly, data migration using DMS supports online migration, allowing you to keep your application online while data is synchronized, and to track the status of any pending changes. Only a short downtime window is required to cut over to the new database.
 

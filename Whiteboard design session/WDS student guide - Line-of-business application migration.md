@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Line-of-business application migration
@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+August 2019
 </div>
 
 
@@ -27,17 +27,17 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Line-of-business application migration whiteboard design session student guide](#line-of-business-application-migration-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
+- [Line-of-business application migration whiteboard design session student guide](#Line-of-business-application-migration-whiteboard-design-session-student-guide)
+  - [Abstract and learning objectives](#Abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study)
+    - [Customer situation](#Customer-situation)
+    - [Customer needs](#Customer-needs)
+    - [Customer objections](#Customer-objections)
+    - [Infographic for common scenarios](#Infographic-for-common-scenarios)
+  - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#Step-3-Present-the-solution)
+  - [Wrap-up](#Wrap-up)
+  - [Additional references](#Additional-references)
 
 <!-- /TOC -->
 
@@ -47,7 +47,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 In this whiteboard design session, you will look at how to design an Azure migration for a heterogenous customer environment. The existing infrastructure comprises both Windows and Linux servers running on both VMWare and physical machines, and includes some legacy servers. Throughout the whiteboard design session, you will look at the various options and services available to migrate heterogenous environments to Azure.
 
-At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate, Azure Database Migration Service, and Azure Site Recovery.
+At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate and Azure Database Migration Service.
 
 
 ## Step 1: Review the customer case study 
@@ -82,17 +82,17 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Customer needs 
 
-1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required
+1.  Identify which servers (physical and virtual) can be migrated to Azure, and what modifications (if any) are required.
    
-2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies
+2.  Create a road map of prioritized migrations, accounting for ease of migration and dependencies.
 
-3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible
+3.  Where suitable, migrate existing servers and databases to Azure as efficiently as possible.
    
-4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons
+4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons.
    
-5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs
+5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
    
-6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities
+6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
    
 
 ### Customer objections 
@@ -109,7 +109,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate, Azure Site Recovery, and Azure Database Migration Service](images/common_scenarios.png)
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png)
 
 ## Step 2: Design a proof of concept solution
 
@@ -208,7 +208,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | **Description** | **Links** |
 | Azure migration hub  | https://azure.microsoft.com/migration/  |
 | Azure Migrate  | https://azure.microsoft.com/services/azure-migrate/  |
-| Azure Site Recovery  | https://azure.microsoft.com/services/site-recovery/ |
 | Azure Database Migration Guide  | https://aka.ms/datamigration  |
 | Microsoft Data Migration Assistant (DMA) | https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017 |
 | Azure Data Migration Service | https://azure.microsoft.com/services/database-migration/ |

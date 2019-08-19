@@ -136,77 +136,103 @@ Function Wait-For-Website {
     }
 }
 
+Function Rearm-VM {
+    Param (
+        [string]$ComputerName,
+        [string]$Username,
+        [string]$Password
+    )
+
+    Write-Output "Getting IP for $ComputerName"
+
+    $vm = Get-VM -Name $ComputerName
+    $ip = $vm.NetworkAdapters[0].IPAddresses[0]
+
+    Write-Output "Creating credentials object"
+    $localusername = "$computerName\$Username"
+    $securePassword = ConvertTo-SecureString $Password -AsPlainText -Force
+    $localcredential = New-Object System.Management.Automation.PSCredential ($localusername, $securePassword)
+
+    Write-Output "Re-arm (extend eval license) for VM $ComputerName at $ip"
+    set-item wsman:\localhost\Client\TrustedHosts -value $ip -Force
+
+    Invoke-Command -ComputerName $ip -ScriptBlock { 
+        slmgr.vbs /rearm
+        net accounts /maxpwage:unlimited
+        Restart-Computer -Force 
+    } -Credential $localcredential
+
+    Write-Output "Re-arm complete"
+}
+
+Start-Transcript "C:\PostRebootConfigure_log.txt"
 $ErrorActionPreference = 'SilentlyContinue'
 Import-Module BitsTransfer
 
 # Create paths
+Write-Output "Create paths"
 $opsDir = "C:\OpsgilityTraining"
 $vmDir = "F:\VirtualMachines"
 $tempDir = "D:\"
 New-Item -Path $vmDir -ItemType directory -Force
 
 # Unregister scheduled task so this script doesn't run again on next reboot
+Write-Output "Remove PostRebootConfigure scheduled task"
 Unregister-ScheduledTask -TaskName "SetUpVMs" -Confirm:$false
 
-# Set final script to run on login (doesn't work if run now)
-Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name "NextRun" `
-    -Value "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -executionPolicy Unrestricted -File $opsDir\OnLoginConfigure.ps1"
-
-# Download AzCopy. We won't use the aks.ms/downloadazcopy link in case of breaking changes in later versions
+# Download AzCopy. We won't use the aka.ms/downloadazcopy link in case of breaking changes in later versions
+Write-Output "Download and install AzCopy"
 $azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/azcopy_windows_amd64_10.1.1.zip"
 $azcopyZip = "$opsDir\azcopy.zip"
 Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyZip
 $azcopyZipfile = Get-ChildItem -Path $azcopyZip
 Unzip-Files -Files $azcopyZipfile -Destination $opsDir
-
 $azcopy = "$opsDir\azcopy_windows_amd64_10.1.1\azcopy.exe"
 
 # Download SmartHotel VMs from blob storage
-# Also download Azure Migrate appliance (saves time in lab lter)
+# Also download Azure Migrate appliance (saves time in lab later)
+Write-Output "Download nested VM zip files using AzCopy"
 $container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration'
 
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v1.19.05.10.zip $tempDir\AzureMigrate.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v2.19.07.30.zip $tempDir\AzureMigrate.zip"
 
 # Unzip the VMs
+Write-Output "Unzip nested VMs"
 $zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
 Unzip-Files -Files $zipfiles -Destination $vmDir
 
 # Create the NAT network
+Write-Output "Create internal NAT"
 $natName = "InternalNat"
 New-NetNat -Name $natName -InternalIPInterfaceAddressPrefix 192.168.0.0/16
 
 # Create an internal switch with NAT
+Write-Output "Create internal switch"
 $switchName = 'InternalNATSwitch'
 New-VMSwitch -Name $switchName -SwitchType Internal
 $adapter = Get-NetAdapter | Where-Object { $_.Name -like "*"+$switchName+"*" }
 
 # Create an internal network (gateway first)
+Write-Output "Create gateway"
 New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $adapter.ifIndex
 
-# Add NAT forwarders
-Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 22   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 22   -NatName $natName
-Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 80   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 80   -NatName $natName
-Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 1433 -Protocol TCP -InternalIPAddress "192.168.0.6" -InternalPort 1433 -NatName $natName
-
-# Add a firewall rule for HTTP and SQL
-New-NetFirewallRule -DisplayName "SSH Inbound" -Direction Inbound -LocalPort 22 -Protocol TCP -Action Allow
-New-NetFirewallRule -DisplayName "HTTP Inbound" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow
-New-NetFirewallRule -DisplayName "Microsoft SQL Server Inbound" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
-
 # Enable Enhanced Session Mode on Host
+Write-Output "Enable Enhanced Session Mode"
 Set-VMHost -EnableEnhancedSessionMode $true
 
 # Create the nested Windows VMs - from VHDs
+Write-Output "Create Hyper-V VMs"
 New-VM -Name smarthotelweb1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelWeb1\SmartHotelWeb1.vhdx" -Path "$vmdir\SmartHotelWeb1" -Generation 2 -Switch $switchName 
 New-VM -Name smarthotelweb2 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelWeb2\SmartHotelWeb2.vhdx" -Path "$vmdir\SmartHotelWeb2" -Generation 2 -Switch $switchName
 New-VM -Name smarthotelSQL1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\SmartHotelSQL1\SmartHotelSQL1.vhdx" -Path "$vmdir\SmartHotelSQL1" -Generation 2 -Switch $switchName
 New-VM -Name UbuntuWAF      -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath "$vmdir\UbuntuWAF\UbuntuWAF.vhdx"           -Path "$vmdir\UbuntuWAF"      -Generation 1 -Switch $switchName
 
 # Configure IP addresses (don't change the IPs! VM config depends on them)
+Write-Output "Configure VM networking"
 Get-VMNetworkAdapter -VMName "smarthotelweb1" | Set-VMNetworkConfiguration -IPAddress "192.168.0.4" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
 Get-VMNetworkAdapter -VMName "smarthotelweb2" | Set-VMNetworkConfiguration -IPAddress "192.168.0.5" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
 Get-VMNetworkAdapter -VMName "smarthotelsql1" | Set-VMNetworkConfiguration -IPAddress "192.168.0.6" -Subnet "255.255.255.0" -DefaultGateway "192.168.0.1" -DNSServer "8.8.8.8"
@@ -214,10 +240,38 @@ Get-VMNetworkAdapter -VMName "UbuntuWAF"      | Set-VMNetworkConfiguration -IPAd
 
 # We always want the VMs to start with the host and shut down cleanly with the host
 # (If they just save state, which is the default, they can break if the host re-starts on a different CPU architecture)
+Write-Output "Set VM auto start/stop"
 Get-VM | Set-VM -AutomaticStartAction Start -AutomaticStopAction ShutDown
 
 # Start all the VMs
+Write-Output "Start VMs"
 Get-VM | Start-VM
 
 # Ping website to warm it up
+Write-Output "Wait for smarthotel site"
 Wait-For-Website('http://192.168.0.8')
+
+# Rearm (extend evaluation license) and reboot each Windows VM
+Write-Output "Re-arming Windows VMs (extend eval licenses)"
+Rearm-VM -ComputerName "smarthotelweb1" -Username "Administrator" -Password "demo@pass123"
+Rearm-VM -ComputerName "smarthotelweb2" -Username "Administrator" -Password "demo@pass123"
+Rearm-VM -ComputerName "smarthotelSQL1" -Username "Administrator" -Password "demo@pass123"
+
+# Warm up the app after the re-arm reboots
+Write-Output "Waiting for SmartHotel reboot"
+Wait-For-Website('http://192.168.0.8')
+
+# Add NAT forwarders
+# We do this and the firewall rules last so the user check that the web site is working when accessed via the host IP only works once all the other set-up is completed
+Write-Output "Create NAT rules"
+Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 22   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 22   -NatName $natName
+Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 80   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 80   -NatName $natName
+Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 1433 -Protocol TCP -InternalIPAddress "192.168.0.6" -InternalPort 1433 -NatName $natName
+
+# Add a firewall rule for HTTP and SQL
+Write-Output "Create firewall rules"
+New-NetFirewallRule -DisplayName "SSH Inbound" -Direction Inbound -LocalPort 22 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "HTTP Inbound" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "Microsoft SQL Server Inbound" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
+
+Stop-Transcript

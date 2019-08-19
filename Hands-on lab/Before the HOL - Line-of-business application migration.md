@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Line-of-business application migration
@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+August 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -26,11 +26,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Line-of-business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Deploy the on-premises environment](#task-1-deploy-the-on-premises-environment)
-    - [Task 2: Verify the on-premises environment](#task-2-verify-the-on-premises-environment)
+- [Line-of-business application migration before the hands-on lab setup guide](#Line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#Requirements)
+  - [Before the hands-on lab](#Before-the-hands-on-lab)
+    - [Task 1: Deploy the on-premises environment](#Task-1-Deploy-the-on-premises-environment)
+    - [Task 2: Verify the on-premises environment](#Task-2-Verify-the-on-premises-environment)
 
 <!-- /TOC -->
 
@@ -50,8 +50,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - Standard DSv3 Family vCPUs: **at least 8 vCPUs**.
         - Standard FSv2 Family vCPUs: **at least 6 vCPUs**.
         - Total Regional vCPUs: **at least 14 vCPUs**.
-  
-3.  Your subscription must be registered for the Azure Migrate v2 Preview.  [Click here to apply.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3jsP9XEFE1ClBlDcwuVgRZUODNERjNTVjJSUVRBVllMNzhRVDFESVozRS4u)
+    
+    > **Note:** If you are using an Azure Pass subscription, you may not meet the vCPU quotas above. In this case, you can still complete the lab, by taking the following steps:
+    > -  Deploy the 'on-premises' environment (see below) in a different Azure region to the Azure VMs created during migration. With this change, you will only need 8 Total Regional vCPUs. Migration will take a little longer, since data must be transferred between regions.
+    > -  Use a different VM tier instead of FSv2 for the migrated VMs (for example, DSv2 or DSv3). However, you cannot change the tier of the DSv3 VM, since this tier is required for the nested virtualization support used to implement the 'on-premises' environment.
 
 ## Before the hands-on lab
 
@@ -61,11 +63,11 @@ Duration: 60 minutes
 
 1.  Deploy the template **SmartHotelHost.json** to a new resource group. This template deploys a virtual machine running nested Hyper-V, with 4 nested VMs. This comprises the 'on-premises' environment which you will assess and migrate during this lab.
 
-    You can deploy the template by clicking on the 'Deploy to Azure' button below.
+    You can deploy the template by clicking on the 'Deploy to Azure' button below. The suggested resource group name to use is **SmartHotelHostRG**.
 
-    [![Button to deploy the SmartHotelHost template to Azure](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
+    [![Button to deploy the SmartHotelHost template to Azure.](Images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMCW-Line-of-business-application-migration%2Fmaster%2FHands-on%2520lab%2FResources%2FSmartHotelHost.json)
 
-    >**Note**: The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour from the start of template deployment for the scripts to run.**
+    > **Note:** The template will take around 6-7 minutes to deploy. Once template deployment is complete, several additional scripts are executed to bootstrap the lab environment. **Allow at least 1 hour 15 minutes from the start of template deployment for the scripts to run.**
 
 ### Task 2: Verify the on-premises environment
 
@@ -73,8 +75,10 @@ Duration: 60 minutes
    
 2.  Make a note of the public IP address.
 
-3.  Open a browser window, and navigate to **http://\<ip-address\>**. You should see the SmartHotel application, which is running as nested VMs within Hyper-V on the SmartHotelHost.
+3.  Open a browser window, and navigate to **http://\<ip-address\>**. You should see the SmartHotel application, which is running on nested VMs within Hyper-V on the SmartHotelHost.
 
-    ![Browser screenshot showing the SmartHotel application](Images/BeforeTheHOL/smarthotel.png)
+    ![Browser screenshot showing the SmartHotel application.](Images/BeforeTheHOL/smarthotel.png)
+
+    > **Note:** If the SmartHotel application is not shown, wait 10 minutes and try again. It takes **at least 1 hour 15 minutes** from the start of template deployment. You can also check the CPU, network and disk activity levels for the SmartHotelHost VM in the Azure portal, to see if the provisioning is still active.
 
 You should follow all steps provided *before* performing the Hands-on lab.
