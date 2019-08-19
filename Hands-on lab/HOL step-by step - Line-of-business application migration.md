@@ -281,29 +281,29 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
 The next step is to register the Hyper-V host with the Azure Migrate appliance.
 
-11. Under 'Specify the list of Hyper-V hosts and clusters to discover', click **Add**.
+12. Under 'Specify the list of Hyper-V hosts and clusters to discover', click **Add**.
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the button to add Hyper-V hosts.](Images/Exercise1/appliance-config-6.png)
 
-12. A window will appear prompting for a list of Hyper-V hosts. Enter the Hyper-V hostname, **SmartHotelHost**. Then click **Validate**.
+13. A window will appear prompting for a list of Hyper-V hosts. Enter the Hyper-V hostname, **SmartHotelHost**. Then click **Validate**.
 
     > **Note:** The Hyper-V host must be specified using a hostname, and that hostname must resolve to the IP address of the host. The Hyper-V host cannot be specified using an IP address directly.
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the button to add Hyper-V hosts.](Images/Exercise1/appliance-config-7.png)
 
-13. A table shows the SmartHotelHost, with status 'green'. Click **Validate** again, and check the status stays green. Then click **Save and start discovery**.
+14. A table shows the SmartHotelHost, with status 'green'. Click **Validate** again, and check the status stays green. Then click **Save and start discovery**.
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the Hyper-V host has been added, with the 'Save and start discovery' button enabled.](Images/Exercise1/appliance-config-8.png)
 
-14. A message 'Initiating discovery and configuring appliance' is shown.
+15. A message 'Initiating discovery and configuring appliance' is shown.
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing a progress ticker labelled 'Creating site ant initiating discovery'.](Images/Exercise1/appliance-config-9a.png)
 
-15. **Wait** for the Azure Migrate status to show 'Created Site and initiating discovery'. This will take several minutes.
+16. **Wait** for the Azure Migrate status to show 'Created Site and initiating discovery'. This will take several minutes.
     
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing a green check mark labelled 'Created Site and initiating discovery'.](Images/Exercise1/appliance-config-9b.png)
 
-16. Return to the Azure Migrate blade in the Azure portal.  Click on **Servers**, then click **Refresh**.  Under 'Azure Migrate: Server Assessment' you should see a count of the number of servers discovered so far. If discovery is still in progress, click **Refresh** periodically until 5 discovered servers are shown. This may take several minutes.
+17. Return to the Azure Migrate blade in the Azure portal.  Click on **Servers**, then click **Refresh**.  Under 'Azure Migrate: Server Assessment' you should see a count of the number of servers discovered so far. If discovery is still in progress, click **Refresh** periodically until 5 discovered servers are shown. This may take several minutes.
     
     ![Screenshot of the Azure Migrate portal blade. Under 'Azure Migrate: Server Assessment' the value for 'discovered servers' is '5'.](Images/Exercise1/discovered-servers.png)
 
@@ -548,7 +548,7 @@ In this task you will create a new Azure SQL database to migrate the on-premises
         - Location: **IMPORTANT: For most users, select the same region you used when you started your lab - this makes migration faster. If you are using an Azure Pass subscription, choose a different region to stay within the Total Regional vCPU limit.**
         - Allow Azure services to access server: **Checked**
 
-        > **Note:** You can verify the location by opening another browser tab, navigating to https://portal.azure.com and clicking Virtual Machines on the left navigation. Use the same region as the **SmartHotelHost** virtual machine.
+    > **Note:** You can verify the location by opening another browser tab, navigating to https://portal.azure.com and clicking Virtual Machines on the left navigation. Use the same region as the **SmartHotelHost** virtual machine.
 
     - Use SQL elastic pool: **No**
     - Compute + storage: **Standard S0**
