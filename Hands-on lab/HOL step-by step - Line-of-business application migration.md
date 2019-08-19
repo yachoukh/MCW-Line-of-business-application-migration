@@ -1,4 +1,4 @@
-![Microsoft Cloud Workshop logo](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshop](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Line-of-business application migration
@@ -108,8 +108,6 @@ The application, web, and web proxy tiers will be migrated to Azure VMs using Az
 1.  You will need Owner or Contributor permissions for an Azure subscription to use in the lab.
 
 2.  Your subscription must have sufficient unused quota to deploy the VMs used in this lab.
-
-For further details, see [Before the HOL - Line-of-business application migration](./Before%20the%20HOL%20-%20Line-of-business%20application%20migration.md).
 
 ## Before the hands-on lab
 
@@ -261,7 +259,7 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the first step 'Set up prerequisites' in progress. The license terms, internet connectivity, and time sync steps have been completed, and the Azure Migrate updates are in progress.](Images/Exercise1/appliance-config-2.png)
 
-8.  **Wait** while the wizard installs the latest Azure Migrate updates. If prompted for credentials, enter user name **Administrator** and password **demo@pass123**. Once the Azure Migrate updates are completed, check at the top of the browser window to see if a management app restart is required, and if so click the link to restart the app. 
+8.  **Wait** while the wizard installs the latest Azure Migrate updates. If prompted for credentials, enter user name **Administrator** and password **demo@pass123**. Once the Azure Migrate updates are completed, check at the top of the browser window to see if a management app restart is required, and if so, click the link to restart the app. 
 
    ![Screenshot of the Azure Migrate appliance configuration wizard, showing the prompt to restart the management app after installing updates.](Images/Exercise1/appliance-config-3a.png)
 
@@ -299,7 +297,7 @@ The next step is to register the Hyper-V host with the Azure Migrate appliance.
 
 14. A message 'Initiating discovery and configuring appliance' is shown.
 
-    ![Screenshot of the Azure Migrate appliance configuration wizard, showing a progress ticker labelled 'Creating site ant initiating discovery'.](Images/Exercise1/appliance-config-9.png)
+    ![Screenshot of the Azure Migrate appliance configuration wizard, showing a progress ticker labelled 'Creating site ant initiating discovery'.](Images/Exercise1/appliance-config-9a.png)
 
 15. **Wait** for the Azure Migrate status to show 'Created Site and initiating discovery'. This will take several minutes.
     
@@ -718,7 +716,7 @@ In subsequent tasks, you will use this project to migrate both the database sche
     
     > **Note**: The DMS service connects to the Hyper-V host, which has been pre-configured with a NAT rule to forward incoming SQL requests (TCP port 1433) to the SQL Server VM. In a real-world migration, the SQL Server VM would most likely have its own IP address on the internal network, via an external Hyper-V switch.
     >
-    > The Hyper-V host is accessed via its private IP address (10.0.0.4). The DMS service accesses this IP address over the peering connection between the DMS Vnet and the SmartHotelHost Vnet. This simulates a VPN or ExpressRoute connection between a DMS Vnet and an on-premises network.
+    > The Hyper-V host is accessed via its private IP address (10.0.0.4). The DMS service accesses this IP address over the peering connection between the DMS VNet and the SmartHotelHost VNet. This simulates a VPN or ExpressRoute connection between a DMS VNet and an on-premises network.
 
 5.  In the 'Select databases' step, the **Smarthotel.Registration** database should already be selected. Click **Save**.
 
@@ -786,7 +784,7 @@ In this task you will use the Azure Database Migration Service to migrate the da
 
 The schema migration will be carried out using an offline data migration activity within the migration project created in task 5.
 
-1.  Return to the Azure portal blade for your **DBMigrate** migraiton project in DMS. Click **+ New Activity** and select **Offline data migration** from the drop-down.
+1.  Return to the Azure portal blade for your **DBMigrate** migration project in DMS. Click **+ New Activity** and select **Offline data migration** from the drop-down.
 
     ![Screenshot showing the 'New Activity' button within an Azure Database Migration Service project, with 'Offline data migration' selected from the drop-down.](Images/Exercise2/new-activity-data.png)
 
@@ -977,7 +975,7 @@ In this task, you will configure and enable the replication of your on-premises 
     | smarthotelweb1 | Standard_F2s_v2 | Windows |
     | smarthotelweb2 | Standard_F2s_v2 | Windows |
 
-    > **Note:** If you are using an Azure Pass subscription, you subscription may not have a quota allocated for FSv2 virtual machines. In this case, use **DS2_v2 or D2s_v3** virtual machines instead.
+    > **Note:** If you are using an Azure Pass subscription, your subscription may not have a quota allocated for FSv2 virtual machines. In this case, use **DS2_v2 or D2s_v3** virtual machines instead.
 
     ![Screenshot of the 'Compute' tab of the 'Replicate' wizard in Azure Migrate Server Migration. Each VM is configured to use a Standard_F2s_v2 SKU, and has the OS Type specified.](Images/Exercise3/replicate-6.png)
 
@@ -1052,7 +1050,7 @@ In this task you will perform a migration of the UbuntuWAF, smarthotelweb1, and 
 
     > **Note:** You can optionally choose whether the on-premises virtual machines should be automatically shut down before migration to minimize data loss. Either setting will work for this lab.
 
-3.  The migration process will start
+3.  The migration process will start.
 
     ![Screenshot showing 3 VM migration notifications.](Images/Exercise3/migrate-3.png)
 
@@ -1070,7 +1068,7 @@ In this task you will perform a migration of the UbuntuWAF, smarthotelweb1, and 
 
 #### Task summary <!-- omit in toc -->
 
-In this task you used Azure Migrate to create Azure VMs using the settings you have configured and the data replicated from the Hyper-V machines. This migrated your on-premises VMs to Azure.
+In this task you used Azure Migrate to create Azure VMs using the settings you have configured, and the data replicated from the Hyper-V machines. This migrated your on-premises VMs to Azure.
 
 
 ### Task 7: Configure the database connection
@@ -1115,7 +1113,7 @@ As a preliminary step, you will temporarily associate a public IP address with t
 
 8.  Update the **DefaultConnection** setting to connect to your Azure SQL Database.
 
-    You can find the connection string for the Azure SQL Database in the Azure portal by browsing to the database, and clicking **Show database connection strings**
+    You can find the connection string for the Azure SQL Database in the Azure portal by browsing to the database, and clicking **Show database connection strings**.
 
      ![Screenshot showing the 'Show database connection strings' link for an Azure SQL Database.](Images/Exercise3/show-connection-strings.png)
 
