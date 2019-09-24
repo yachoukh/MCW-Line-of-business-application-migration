@@ -4,6 +4,8 @@ Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft fu
 
 The board has approved a plan to migrate as much existing infrastructure as possible to Azure, to eliminate IT infrastructure overheads and 'clean house'. Your team has been tasked with planning and executing this migration.
 
+August 2019
+
 ## Target audience
 
 This workshop is applicable to any technical role with a responsibility or involvement in Azure migration
@@ -12,7 +14,7 @@ This workshop is applicable to any technical role with a responsibility or invol
 - Application Developer or DevOps Engineer
 - Cloud Solution Architect
 
-## Abstract 
+## Abstracts
 
 ### Workshop
 
@@ -47,3 +49,17 @@ At the end of this lab, you will be better able to execute migrations to Azure.
 
 - [Azure Migration Center](https://azure.microsoft.com/migration)
 - [Azure Database Migration Guide](https://aka.ms/datamigration)
+
+## Help & Support
+
+We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
+
+***Having trouble?***
+- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
+- Next, submit an issue with a detailed description of the problem.
+- Please do not submit pull requests. Our authors will review open issues and submit pull requests, as needed, for approval.  
+
+If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
+
+### Please allow 5 - 10 business days for review and resolution of issues.
+
