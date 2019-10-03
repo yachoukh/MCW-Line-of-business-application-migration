@@ -1083,7 +1083,7 @@ As a preliminary step, you will temporarily associate a public IP address with t
 
 1. Click **+ Create a resource** and enter **Public IP Address** in the search box. In the **Public IP Address** blade click **Create**.
 
-    ![Screnshot showing the Public IP address create option.](images/Exercise3/public-ip-create-1.png)
+    ![Screenshot showing the Public IP address create option.](images/Exercise3/public-ip-create-1.png)
 
 2. Create a new public IP address with the following values (plus defaults) and click **Create**.
 
