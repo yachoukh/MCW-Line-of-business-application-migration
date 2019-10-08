@@ -41,7 +41,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 5: Configure dependency visualization](#task-5-configure-dependency-visualization)
     - [Task 6: Explore dependency visualization](#task-6-explore-dependency-visualization)
   - [Exercise 2: Migrate the Application Database](#exercise-2-migrate-the-application-database)
-    - [Overview](#overview-1)
     - [Task 1: Register the Microsoft.DataMigration resource provider](#task-1-register-the-microsoftdatamigration-resource-provider)
     - [Task 2: Create an Azure SQL Database](#task-2-create-an-azure-sql-database)
     - [Task 3: Create the Database Migration Service](#task-3-create-the-database-migration-service)
@@ -196,7 +195,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
 8. At the first step, 'Before You Begin', select **Next**.
 
-9. At the 'Locate Folder' step, select **Browse** and navigate to **F:\VirtualMachines\AzureMigrateAppliance** (the folder name may also include a version number), then select **Select Folder**, then select **Next**.
+9. At the 'Locate Folder' step, select **Browse** and navigate to **F:\VirtualMachines\AzureMigrateAppliance** (the folder name may also include a version number), then choose **Select Folder**, then select **Next**.
 
     ![Screenshot of the Hyper-V 'Import Virtual Machine' wizard with the F:\VirtualMachines\AzureMigrateAppliance folder selected.](images/Exercise1/import-vm-2.png)
 
@@ -503,8 +502,6 @@ In this task you explored the Azure Migrate dependency visualization feature.
 In this exercise, you used Azure Migrate to assess the on-premises environment. This included selecting Azure Migrate tools, deploying the Azure Migrate appliance into the on-premises environment, creating a migration assessment, and using the Azure Migrate dependency visualization.
 
 ## Exercise 2: Migrate the Application Database
-
-### Overview
 
 Duration: 60 minutes
 
